@@ -660,16 +660,16 @@
             <div class="rc-bench-head">
               <div>
                 <div class="rc-bench-price" id="rcBenchPrice">—</div>
-                <div class="rc-bench-price-label" id="rcBenchLabel">情景币价（拖动滑块实时重算）· 当前实时价 —</div>
+                <div class="rc-bench-price-label" id="rcBenchLabel">当前实时币价 · 拖动滑块切换到情景币价</div>
               </div>
               <span class="rc-rec-badge">可滑动测算</span>
             </div>
-            <input class="rc-price-slider" id="rcPriceSlider" type="range" aria-label="BTC 情景币价（美元）" min="30000" max="150000" step="500" value="85000" />
+            <input class="rc-price-slider" id="rcPriceSlider" type="range" aria-label="BTC 情景币价（美元）" min="30000" max="150000" step="500" value="61905" />
             <div class="rc-bench-scale"><span>$30,000</span><span>$90,000</span><span>$150,000</span></div>
             <div class="rc-tier-row" role="group" aria-label="币价快捷定位" id="rcTierRow">
-              <button type="button" data-price="live">实时价</button>
+              <button type="button" data-price="live" class="active">实时价</button>
               <button type="button" data-price="60000">$60,000</button>
-              <button type="button" data-price="85000" class="active">$85,000</button>
+              <button type="button" data-price="85000">$85,000</button>
               <button type="button" data-price="120000">$120,000</button>
             </div>
             <div class="rc-bench-metrics">
@@ -1058,8 +1058,8 @@
           memAdj: { source: "snapshot", pct: SNAP.adj.pct, remainingBlocks: SNAP.adj.remainingBlocks, nextT: SNAP.diff / 1e12 * (1 + SNAP.adj.pct / 100), timeText: "剩 " + fmt(SNAP.adj.remainingBlocks) + " 个区块" },
           dailySource: null, dailyAt: null, dailyStale: false, dailyIsSnapshot: true, failedSources: []
         };
-        /* 首次打开：滑块固定在 $85,000 情景价，不默认跟随实时价；点「实时价」后 sliderPrice=null 才回到实时价 */
-        var sliderPrice = 85000, recoveryPct = 65, heroMode = 1;
+        /* 首次打开：滑块默认定位在实时币价（sliderPrice=null 跟随实时价）；拖动滑块或点三档按钮后切到情景币价，点「实时价」回到实时价 */
+        var sliderPrice = null, recoveryPct = 65, heroMode = 1;
         var TIERS = [60000, 85000, 120000];
         var TRIED_ALL = "mempool.space、mempool 镜像、api.mempool.space、mempool.ninja、blockchain.info、Blockchair、Blockstream";
 
