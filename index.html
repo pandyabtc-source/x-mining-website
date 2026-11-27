@@ -199,6 +199,8 @@
       }
       .contact-cta p { margin: 0; flex: 1 1 320px; font-size: 15.5px; color: #c2d5e5; }
       .contact-cta p b { color: #fff; display: block; font-size: 18px; margin-bottom: 4px; font-family: Montserrat, "Noto Sans SC", sans-serif; font-weight: 700; }
+      .contact-cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+      button.btn { font-family: inherit; cursor: pointer; }
 
       /* ---------- investment plan / payback ---------- */
       .equip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -319,7 +321,6 @@
       .rc-bm-net span { font-size: 14px; color: var(--ink-soft); font-weight: 400; }
       .rc-bm-row { display: flex; justify-content: space-between; gap: 10px; font-size: 13.5px; color: var(--ink-soft); margin-top: 6px; }
       .rc-bm-row b { color: var(--ink); font-variant-numeric: tabular-nums; text-align: right; }
-      .rc-calc-note { display: block; font-size: 12.5px; color: var(--ink-soft); line-height: 1.55; margin-top: 2px; }
       .rc-recovery-row { display: flex; align-items: center; gap: 14px; margin-top: 18px; flex-wrap: wrap; }
       .rc-recovery-row label { font-size: 13.5px; color: var(--ink-soft); font-weight: 700; }
       .rc-recovery-row input[type="range"] { flex: 1 1 180px; height: 32px; accent-color: var(--rc-m2); cursor: pointer; }
@@ -418,6 +419,7 @@
       .rc-table .rc-adv { text-align: left; font-size: 13.5px; color: var(--accent); font-weight: 700; }
       .rc-table .rc-adv.tie { color: var(--ink-soft); font-weight: 400; }
       .rc-win { display: inline-block; margin-left: 7px; font-size: 11.5px; font-weight: 800; color: var(--accent-ink); background: var(--accent); border-radius: 999px; padding: 1px 8px; vertical-align: 2px; }
+      .rc-cf-note { display: block; font-size: 12.5px; font-weight: 400; color: var(--ink-soft); margin-top: 4px; }
       .rc-pos { color: var(--rc-m1); }
       .rc-neg { color: var(--rc-bad); }
       .rc table.rc-fact td { text-align: left; }
@@ -492,10 +494,11 @@
           <span class="co">ООО «Х-МАЙНИНГ»</span><br />
           <span data-zh="亚马尔涅涅茨地区天然气发电比特币矿场" data-ru="Дата-центр майнинга на природном газе в Ямало-Ненецком автономном округе">亚马尔涅涅茨地区天然气发电比特币矿场</span>
         </h1>
-        <p class="sub" data-zh="自有天然气发电，工业级矿机托管与联合挖矿。具体合作条件，欢迎通过邮件联系我们。" data-ru="Собственная газовая генерация, промышленный хостинг и совместный майнинг. По условиям сотрудничества — напишите нам по электронной почте.">自有天然气发电，工业级矿机托管与联合挖矿。具体合作条件，欢迎通过邮件联系我们。</p>
+        <p class="sub" data-zh="自有天然气发电，工业级矿机托管与联合挖矿。具体合作条件，欢迎通过 Telegram 或微信联系我们。" data-ru="Собственная газовая генерация, промышленный хостинг и совместный майнинг. По условиям сотрудничества — свяжитесь с нами в Telegram или WeChat.">自有天然气发电，工业级矿机托管与联合挖矿。具体合作条件，欢迎通过 Telegram 或微信联系我们。</p>
         <div class="hero-cta">
           <a class="btn btn-solid" href="#modes" data-zh="查看合作模式" data-ru="Форматы сотрудничества">查看合作模式</a>
-          <a class="btn btn-ghost" href="mailto:XMINING.RU@GMAIL.COM" data-zh="邮件联系我们" data-ru="Написать нам">邮件联系我们</a>
+          <a class="btn btn-ghost" href="https://t.me/Xpandyabot" target="_blank" rel="noopener" data-zh="Telegram 联系" data-ru="Написать в Telegram">Telegram 联系</a>
+          <button class="btn btn-ghost" type="button" id="heroWxOpen" aria-haspopup="dialog" aria-controls="rcWxOverlay" data-zh="微信联系" data-ru="Написать в WeChat">微信联系</button>
         </div>
 
         <div class="hero-flow" aria-hidden="true">
@@ -598,7 +601,7 @@
     <section class="block" id="modes">
       <div class="wrap">
         <div class="sec-head"><span class="no">03</span><h2 data-zh="合作模式" data-ru="Форматы сотрудничества">合作模式</h2></div>
-        <p class="lede" data-zh="两种模式最核心的区别在计价口径：模式一的气价、运维费与场地租金全部按成本价结算，管线等建设费用由公司与投资者共同承担，公司收益来自产出分成；模式二按客户气价结算，运维费、场地租金等也相应上浮，投资者保留全部产出。具体价格与条款请通过邮件联系我们确认，本页不作固定承诺。" data-ru="Ключевое различие двух форматов — база цен. В формате 1 газ, эксплуатация и аренда площадки рассчитываются по себестоимости, затраты на строительство, включая газовую инфраструктуру, компания и инвестор несут совместно, а доход компании формируется из её доли добычи. В формате 2 газ отпускается по клиентской цене, эксплуатация, аренда площадки и прочие услуги тарифицируются соответственно выше, а вся добыча остаётся у инвестора. Конкретные цены и условия уточняйте по электронной почте; фиксированных обязательств на этой странице мы не указываем.">两种模式最核心的区别在计价口径：模式一的气价、运维费与场地租金全部按成本价结算，管线等建设费用由公司与投资者共同承担，公司收益来自产出分成；模式二按客户气价结算，运维费、场地租金等也相应上浮，投资者保留全部产出。具体价格与条款请通过邮件联系我们确认，本页不作固定承诺。</p>
+        <p class="lede" data-zh="两种模式的核心区别在计价口径：模式一按成本价结算气价、运维费与租金，管线等建设费用由公司与投资者共担，公司收益来自产出分成；模式二按客户价结算、费用相应上浮，投资者保留全部产出。具体价格与条款请邮件联系确认，本页不作固定承诺。" data-ru="Ключевое различие форматов — база цен. Формат 1: газ, эксплуатация и аренда — по себестоимости, затраты на строительство, включая газовую инфраструктуру, делятся с инвестором, доход компании — доля добычи. Формат 2: клиентские цены, тарифы выше, вся добыча — инвестору. Конкретные цены и условия уточняйте по почте; фиксированных обязательств на этой странице нет.">两种模式的核心区别在计价口径：模式一按成本价结算气价、运维费与租金，管线等建设费用由公司与投资者共担，公司收益来自产出分成；模式二按客户价结算、费用相应上浮，投资者保留全部产出。具体价格与条款请邮件联系确认，本页不作固定承诺。</p>
 
         <table class="modes">
           <thead>
@@ -611,35 +614,38 @@
           <tbody>
             <tr>
               <th data-zh="合作方式" data-ru="Принцип">合作方式</th>
-              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="天然气、运维费与场地租金均按成本价结算，管线等建设费用由公司与投资者共同承担；产出按约定比例分成，公司与投资者利益绑定。" data-ru="Газ, эксплуатация и аренда площадки рассчитываются по себестоимости; затраты на строительство, включая газовую инфраструктуру, компания и инвестор несут совместно. Добыча делится в согласованной пропорции — интересы сторон связаны.">天然气、运维费与场地租金均按成本价结算，管线等建设费用由公司与投资者共同承担；产出按约定比例分成，公司与投资者利益绑定。</span></td>
-              <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><span data-zh="投资者将发电机组和矿机托管于公司，公司提供场地、发电机组维护与矿机运维托管，投资者自营挖矿，产出全部归投资者。" data-ru="Инвестор размещает генераторные установки и майнеры на площадке компании; компания предоставляет площадку, обслуживание генераторных установок и эксплуатацию майнеров, инвестор ведёт майнинг самостоятельно, вся добыча принадлежит ему.">投资者将发电机组和矿机托管于公司，公司提供场地、发电机组维护与矿机运维托管，投资者自营挖矿，产出全部归投资者。</span></td>
+              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="气价、运维费与场地租金按成本价结算，管线等建设费用与投资者共担；产出按约定比例分成，利益绑定。" data-ru="Газ, эксплуатация и аренда — по себестоимости; затраты на строительство, включая газопровод, делятся с инвестором. Добыча делится в согласованной пропорции.">气价、运维费与场地租金按成本价结算，管线等建设费用与投资者共担；产出按约定比例分成，利益绑定。</span></td>
+              <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><span data-zh="投资者自备发电机组与矿机托管于公司，公司提供场地与运维托管，产出全部归投资者。" data-ru="Инвестор размещает свои генераторные установки и майнеры; компания предоставляет площадку и обслуживание, вся добыча — инвестору.">投资者自备发电机组与矿机托管于公司，公司提供场地与运维托管，产出全部归投资者。</span></td>
             </tr>
             <tr>
               <th data-zh="计价口径" data-ru="База цен">计价口径</th>
-              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="气价、运维费、场地租金全部按成本口径结算，公司不在成本项上加价，收益来自产出分成。" data-ru="Газ, эксплуатация и аренда площадки полностью рассчитываются по себестоимости: компания не делает наценки на затратные статьи, её доход формируется из доли добычи.">气价、运维费、场地租金全部按成本口径结算，公司不在成本项上加价，收益来自产出分成。</span></td>
-              <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><span data-zh="气价按客户价结算，运维费、场地租金等按客户口径计费，相应高于成本口径；投资者以此换取全部产出。" data-ru="Газ отпускается по клиентской цене; эксплуатация, аренда площадки и прочие услуги также тарифицируются по клиентской базе и соответственно выше себестоимости. Взамен инвестор сохраняет всю добычу.">气价按客户价结算，运维费、场地租金等按客户口径计费，相应高于成本口径；投资者以此换取全部产出。</span></td>
+              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="气价、运维费、租金全部按成本口径，公司不在成本项加价，收益来自产出分成。" data-ru="Газ, эксплуатация и аренда — полностью по себестоимости, без наценки на затратные статьи; доход компании — доля добычи.">气价、运维费、租金全部按成本口径，公司不在成本项加价，收益来自产出分成。</span></td>
+              <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><span data-zh="气价按客户价，运维费、租金等按客户口径计费，高于成本口径；以此换取全部产出。" data-ru="Газ — по клиентской цене, эксплуатация и аренда — по клиентской базе, выше себестоимости; взамен — вся добыча.">气价按客户价，运维费、租金等按客户口径计费，高于成本口径；以此换取全部产出。</span></td>
             </tr>
             <tr>
               <th data-zh="建设费用" data-ru="Затраты на строительство">建设费用</th>
-              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="管线等基础设施建设费用由公司与投资者共同承担，按投资单元分摊。" data-ru="Затраты на строительство инфраструктуры, включая газопровод, компания и инвестор несут совместно, с распределением по инвестиционным модулям.">管线等基础设施建设费用由公司与投资者共同承担，按投资单元分摊。</span></td>
-              <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><span data-zh="不设建设费用共同承担：投资者自备发电机组与矿机接入，公司提供现成场地与托管运维。" data-ru="Совместного несения затрат на строительство нет: инвестор размещает собственные генераторные установки и майнеры, компания предоставляет готовую площадку и услуги хостинга.">不设建设费用共同承担：投资者自备发电机组与矿机接入，公司提供现成场地与托管运维。</span></td>
+              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="管线等基础设施建设费用与投资者共同承担，按投资单元分摊。" data-ru="Затраты на инфраструктуру, включая газопровод, делятся с инвестором по инвестиционным модулям.">管线等基础设施建设费用与投资者共同承担，按投资单元分摊。</span></td>
+              <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><span data-zh="无建设费用共担：投资者自备设备接入，公司提供现成场地与托管运维。" data-ru="Совместных затрат на строительство нет: инвестор размещает своё оборудование, компания даёт готовую площадку и хостинг.">无建设费用共担：投资者自备设备接入，公司提供现成场地与托管运维。</span></td>
             </tr>
             <tr>
               <th data-zh="产出分配（约）" data-ru="Распределение добычи (примерно)">产出分配（约）</th>
-              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><b class="big">79% / 21%</b><br /><span data-zh="投资者约 79%，公司约 21%；运营成本同步按相同比例分摊。" data-ru="Инвестор — около 79%, компания — около 21%; операционные затраты делятся в той же пропорции.">投资者约 79%，公司约 21%；运营成本同步按相同比例分摊。</span></td>
+              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><b class="big">79% / 21%</b><br /><span data-zh="投资者约 79%，公司约 21%；运营成本同比例分摊。" data-ru="Инвестор — около 79%, компания — около 21%; затраты делятся так же.">投资者约 79%，公司约 21%；运营成本同比例分摊。</span></td>
               <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><b class="big">100%</b><br /><span data-zh="挖出的币全部归投资者，运营成本由投资者承担。" data-ru="Все добытые монеты принадлежат инвестору; операционные затраты несёт инвестор.">挖出的币全部归投资者，运营成本由投资者承担。</span></td>
             </tr>
             <tr>
               <th data-zh="适合情形" data-ru="Кому подходит">适合情形</th>
-              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="希望以成本价用气、运维与租金，与公司共担建设费用和币价波动、长期绑定的合作方。" data-ru="Партнёрам, которые хотят получать газ, эксплуатацию и аренду по себестоимости, разделять с компанией затраты на строительство и волатильность цены в долгосрочном формате.">希望以成本价用气、运维与租金，与公司共担建设费用和币价波动、长期绑定的合作方。</span></td>
-              <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><span data-zh="希望保留全部产出、接受客户口径计费，并自行承担成本与波动的合作方。" data-ru="Партнёрам, которые хотят сохранить всю добычу, готовы к клиентской базе тарифов и самостоятельно несут затраты и риски волатильности.">希望保留全部产出、接受客户口径计费，并自行承担成本与波动的合作方。</span></td>
+              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="想以成本价用气、运维与租金，与公司共担建设费用与币价波动、长期合作的伙伴。" data-ru="Партнёрам, которым нужны газ, эксплуатация и аренда по себестоимости и долгосрочный формат с разделением затрат на строительство и волатильности.">想以成本价用气、运维与租金，与公司共担建设费用与币价波动、长期合作的伙伴。</span></td>
+              <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><span data-zh="想保留全部产出、接受客户口径计费并自担成本与波动的伙伴。" data-ru="Партнёрам, которые хотят всю добычу, готовы к клиентским тарифам и сами несут затраты и риски волатильности.">想保留全部产出、接受客户口径计费并自担成本与波动的伙伴。</span></td>
             </tr>
           </tbody>
         </table>
 
         <div class="contact-cta">
-          <p><b data-zh="想了解具体条件？" data-ru="Нужны конкретные условия?">想了解具体条件？</b><span data-zh="投入金额、能源价格、收益测算与合同条款，请直接发邮件给我们，我们会逐项回复。" data-ru="Суммы инвестиций, цены на энергию, расчёты доходности и условия договора — напишите нам, и мы ответим по каждому пункту.">投入金额、能源价格、收益测算与合同条款，请直接发邮件给我们，我们会逐项回复。</span></p>
-          <a class="btn btn-solid" href="mailto:XMINING.RU@GMAIL.COM">XMINING.RU@GMAIL.COM</a>
+          <p><b data-zh="想了解具体条件？" data-ru="Нужны конкретные условия?">想了解具体条件？</b><span data-zh="投入金额、能源价格、收益测算与合同条款，通过 Telegram 或微信联系我们，我们会逐项回复。" data-ru="Суммы инвестиций, цены на энергию, расчёты доходности и условия договора — свяжитесь с нами в Telegram или WeChat, и мы ответим по каждому пункту.">投入金额、能源价格、收益测算与合同条款，通过 Telegram 或微信联系我们，我们会逐项回复。</span></p>
+          <div class="contact-cta-actions">
+            <a class="btn btn-solid" href="https://t.me/Xpandyabot" target="_blank" rel="noopener" data-zh="Telegram 联系" data-ru="Написать в Telegram">Telegram 联系</a>
+            <button class="btn btn-ghost" type="button" id="ctaWxOpen" aria-haspopup="dialog" aria-controls="rcWxOverlay" data-zh="微信联系" data-ru="Написать в WeChat">微信联系</button>
+          </div>
         </div>
       </div>
     </section>
@@ -648,7 +654,7 @@
     <section class="block alt" id="calc">
       <div class="wrap">
         <div class="sec-head"><span class="no">04</span><h2 data-zh="收益测算" data-ru="Расчёт доходности">收益测算</h2></div>
-        <p class="lede" data-zh="单个投资单元 = 1 台玉柴 300 kW 天然气发电机组 + 63 台比特大陆蚂蚁矿机 S21 200T。本板块按实时行情测算两种合作模式下单台机组的月产出、月净收益与回本周期，已计入下一次比特币减半的影响；拖动滑块可查看任意币价情景。" data-ru="Один инвестиционный модуль — это 1 газогенераторная установка Yuchai 300 кВт и 63 майнера Antminer S21 200T. В этом разделе по актуальным рыночным данным рассчитаны месячная добыча, чистый доход и срок окупаемости одного модуля в двух форматах сотрудничества, с учётом следующего халвинга биткоина; ползунком можно задать любой ценовой сценарий.">单个投资单元 = 1 台玉柴 300 kW 天然气发电机组 + 63 台比特大陆蚂蚁矿机 S21 200T。本板块按实时行情测算两种合作模式下单台机组的月产出、月净收益与回本周期，已计入下一次比特币减半的影响；拖动滑块可查看任意币价情景。</p>
+        <p class="lede" data-zh="单个投资单元 = 1 台玉柴 300 kW 燃气发电机组 + 63 台蚂蚁矿机 S21 200T。本板块按实时行情测算两种模式下单台机组的月产出、月净收益与回本周期（已计入减半），拖动滑块可切换任意币价情景。" data-ru="Один инвестиционный модуль — 1 газогенераторная установка Yuchai 300 кВт и 63 майнера Antminer S21 200T. Здесь по актуальным рыночным данным рассчитаны месячная добыча, чистый доход и окупаемость одного модуля в двух форматах с учётом халвинга; ползунок задаёт любой ценовой сценарий.">单个投资单元 = 1 台玉柴 300 kW 燃气发电机组 + 63 台蚂蚁矿机 S21 200T。本板块按实时行情测算两种模式下单台机组的月产出、月净收益与回本周期（已计入减半），拖动滑块可切换任意币价情景。</p>
 
         <div class="equip-grid">
           <div class="equip">
@@ -664,8 +670,8 @@
             <div class="name" data-zh="蚂蚁 S21 200T（Antminer S21 200T）" data-ru="Antminer S21 200T">蚂蚁 S21 200T（Antminer S21 200T）</div>
             <ul>
               <li data-zh="单台算力 200 TH/s，63 台合计约 12,600 TH/s" data-ru="Хешрейт одного майнера — 200 TH/s; суммарно по модулю — около 12 600 TH/s">单台算力 200 TH/s，63 台合计约 12,600 TH/s</li>
-              <li data-zh="选型算力范围：S21 系列单台算力覆盖约 200–270 TH/s，本项目标准配置选用其中的 S21 200T" data-ru="Диапазон выбора: хешрейт одного майнера серии S21 — примерно от 200 до 270 TH/s; стандартная конфигурация проекта — S21 200T">选型算力范围：S21 系列单台算力覆盖约 200–270 TH/s，本项目标准配置选用其中的 S21 200T</li>
-              <li data-zh="能效约 17.5 J/T，属当前一代主流能效水平；单台功耗约 3.6 kW（墙电）" data-ru="Энергоэффективность — около 17,5 J/T, уровень текущего поколения; потребление одного майнера — около 3,6 кВт">能效约 17.5 J/T，属当前一代主流能效水平；单台功耗约 3.6 kW（墙电）</li>
+              <li data-zh="S21 系列单台算力约 200–270 TH/s，本项目标准配置为 S21 200T" data-ru="Серия S21 — примерно 200–270 TH/s на майнер; стандартная конфигурация проекта — S21 200T">S21 系列单台算力约 200–270 TH/s，本项目标准配置为 S21 200T</li>
+              <li data-zh="能效约 17.5 J/T；单台功耗约 3.6 kW（墙电）" data-ru="Энергоэффективность — около 17,5 J/T; потребление одного майнера — около 3,6 кВт">能效约 17.5 J/T；单台功耗约 3.6 kW（墙电）</li>
             </ul>
           </div>
         </div>
@@ -727,7 +733,7 @@
               <label for="rcRecovery">减半后恢复系数</label>
               <input id="rcRecovery" type="range" min="50" max="100" step="1" value="65" />
               <span class="rc-rv" id="rcRecVal">65%</span>
-              <span class="rc-small">减半当月收入降至 50%，其后 12 个月逐步恢复至该系数并保持；默认 65% 取前两次减半中较差的一次，属偏保守情形。此系数只影响减半之后：拖动时上方两张卡与下方对比表的「回本周期（计入减半）」随即重算；减半前的月净收益与每月产出不受影响。</span>
+              <span class="rc-small">减半当月收入降至 50%，其后 12 个月逐步恢复至该系数并保持；默认 65% 取前两次减半中较差的一次，偏保守。只影响减半后的回本周期重算，不影响减半前的月净收益与产出。</span>
             </div>
           </div>
 
@@ -740,13 +746,13 @@
               <div class="rc-k">每月产出（投资者实际获得）</div>
               <div class="rc-big" id="rcHOut">—</div>
               <div class="rc-sub2" id="rcHOutSub"></div>
+              <div class="rc-sub2" id="rcHOutCost"></div>
               <div class="rc-sub2" id="rcHDiffNote"></div>
             </div>
             <div class="rc-card">
               <div class="rc-k">每月净利润（单台机组）</div>
               <div class="rc-big" id="rcHNet">—</div>
               <div class="rc-sub2" id="rcHNetYear"></div>
-              <div class="rc-sub2"><span class="rc-calc-note" id="rcHInc" style="margin-top:0"></span></div>
             </div>
             <div class="rc-card">
               <div class="rc-k">回本周期（计入减半 · 含恢复）</div>
@@ -754,7 +760,7 @@
               <div class="rc-sub2" id="rcHPbSub"></div>
             </div>
           </div>
-          <p class="rc-small" style="margin-top:10px">模式一：公司按<b>净利润分成 21%</b>，不设上限——币价下跌、利润收窄时公司分成同步减少，与投资者共担风险；模式二：产出全部归投资者，不涉及分成。两种模式的逐项对比见下方。</p>
+          <p class="rc-small" style="margin-top:10px">模式一：公司按<b>净利润分成 21%</b>，不设上限，利润收窄时分成同步减少、与投资者共担风险；模式二：产出全部归投资者，不涉及分成。逐项对比见下方。</p>
 
           <div class="rc-unlock" aria-label="解锁详细版">
             <div class="rc-mode-head">
@@ -762,14 +768,14 @@
               <span class="rc-rec-badge" id="rcUnlockBadge">需授权</span>
             </div>
             <div id="rcUnlockLocked">
-              <p class="rc-small" style="margin-top:8px;font-size:14px">详细版包含本页未展示的完整测算：币价敏感性图、三档币价对照、减半压力测试、每月现金流支出对比与分成示例数字。可通过 Telegram 机器人 <b>@Xpandyabot</b> 提交申请，或在本页填写微信申请表；经审核批准后自动解锁，<b>每次授权有效期 24 小时</b>，到期需重新申请。</p>
+              <p class="rc-small" style="margin-top:8px;font-size:14px">详细版含完整金融模型测算与投资成本数据：币价敏感性图、三档币价对照、减半压力测试、现金流对比、分成示例与可调参数设定。经 Telegram 机器人授权或本页微信申请提交，审核通过后自动解锁；<b>授权有效期 24 小时</b>，到期重新申请。</p>
               <div class="rc-unlock-actions">
                 <a class="rc-btn rc-btn-primary" href="https://t.me/Xpandyabot" target="_blank" rel="noopener">Telegram 申请</a>
                 <button class="rc-btn rc-btn-wx" type="button" id="rcWxOpen" aria-haspopup="dialog" aria-controls="rcWxOverlay">微信申请</button>
                 <button class="rc-btn rc-btn-wx" type="button" id="rcRestoreOpenMain" aria-haspopup="dialog" aria-controls="rcWxOverlay">用编号恢复进度</button>
               </div>
-              <p class="rc-small" style="margin-top:10px">Telegram 申请：去机器人提交申请，批准后机器人会发一条直达链接，点开即自动解锁本页详细版。</p>
-              <p class="rc-small" style="margin-top:6px">已经提交过申请、但换了设备或清除了浏览器数据？点「用编号恢复进度」，输入申请时得到的编号即可查询审核状态；已批准将直接解锁。</p>
+              <p class="rc-small" style="margin-top:10px">Telegram 申请：批准后机器人发送直达链接，点开即解锁。</p>
+              <p class="rc-small" style="margin-top:6px">换设备或清了浏览器数据？点「用编号恢复进度」输入编号即可，已批准直接解锁。</p>
             </div>
             <div id="rcUnlockedBar" hidden>
               <p class="rc-small" style="margin-top:8px;font-size:14.5px"><b id="rcUnlockedText">详细版已解锁</b></p>
@@ -783,7 +789,7 @@
               <h3 id="rcWxTitle">微信申请</h3>
 
               <div id="rcWxFormView">
-                <p class="rc-wx-desc">填写称呼与微信号即可提交申请，无需先加好友。审核通过后，本页会自动解锁详细版（有效期 24 小时）。</p>
+                <p class="rc-wx-desc">填写称呼与微信号即可提交，无需先加好友。审核通过后本页自动解锁详细版（有效期 24 小时）。</p>
                 <form id="rcWxForm" novalidate>
                   <div class="rc-wx-field">
                     <label for="rcWxName">称呼（必填）</label>
@@ -804,7 +810,7 @@
               </div>
 
               <div id="rcWxPendingView" hidden>
-                <p class="rc-wx-desc" id="rcWxPendingDesc">申请已提交，等待审核。审核通过后本页会自动解锁详细版，您可以先关掉这个窗口。</p>
+                <p class="rc-wx-desc" id="rcWxPendingDesc">申请已提交，等待审核。通过后本页自动解锁详细版，可先关掉本窗口。</p>
                 <div class="rc-wx-idbox">
                   <span class="rc-wx-label">申请编号</span>
                   <span class="rc-wx-id rc-wx-reqid" id="rcWxReqId">—</span>
@@ -815,7 +821,7 @@
               </div>
 
               <div id="rcWxRestoreView" hidden>
-                <p class="rc-wx-desc">输入此前提交后得到的申请编号，查询审核状态；已批准将直接解锁详细版。</p>
+                <p class="rc-wx-desc">输入申请编号查询审核状态；已批准将直接解锁详细版。</p>
                 <div class="rc-wx-field">
                   <label for="rcWxRestoreInput">申请编号</label>
                   <input id="rcWxRestoreInput" type="text" autocomplete="off" maxlength="80" placeholder="粘贴申请编号" />
@@ -839,15 +845,15 @@
           </div>
           <div class="rc-sub">
             <h3 id="rcSettleTitle">模式一 · 分成结算方法</h3>
-            <p id="rcSettleIntro">分成结算无需持续关注币价，亦无需月末对账。矿池自动分币、运营负担按比例分摊，两步即可完成结算；币价波动不影响分成比例，无需重新计算。</p>
+            <p id="rcSettleIntro">矿池自动分币、运营负担按比例分摊，两步完成结算；分成比例不随币价波动，无需月末对账。</p>
           </div>
           <div class="rc-panel" id="rcSettlePanel">
             <h3 style="margin:0;font-size:16px;font-weight:700" id="rcSettleStepsTitle">每月结算两步</h3>
             <ol style="margin:10px 0 0;padding-left:22px;font-size:15px;line-height:1.65" id="rcSettleSteps">
-              <li><b>分币：</b>矿池按 <b>79% / 21%</b> 自动分币——投资者获得当月产出的 79%，公司获得 21%，到账即完成结算，无需人工计算。</li>
-              <li><b>分担：</b>当月运营负担由投资者承担 <b>79%</b>，公司承担其余 <b>21%</b>。</li>
+              <li><b>分币：</b>矿池按 <b>79% / 21%</b> 自动分币——投资者得 79%，公司得 21%，到账即结算。</li>
+              <li><b>分担：</b>运营负担投资者承担 <b>79%</b>，公司承担 <b>21%</b>。</li>
             </ol>
-            <p style="margin:12px 0 0;font-size:14.5px" id="rcSettlePrinciple">上述方式实现净利润分成 21% 的原理如下：公司获得 21% 的收入（币）、承担 21% 的运营负担，净得金额恰为<b>净利润的 21%</b>；投资者净得 79%。币价涨跌仅改变金额、不改变比例，因此<b>无需参考价、无需月末对账、无超额退还</b>，每月结算流程保持一致。</p>
+            <p style="margin:12px 0 0;font-size:14.5px" id="rcSettlePrinciple">原理：公司得 21% 收入、担 21% 运营负担，净得恰为<b>净利润的 21%</b>，投资者净得 79%。币价涨跌只改金额、不改比例，<b>无需参考价、无需月末对账、无超额退还</b>。</p>
           </div>
 
           <div id="rcDetail" hidden>
@@ -985,17 +991,17 @@
 
           <div class="rc-sub"><h3>测算说明</h3></div>
           <ul class="rc-notes">
-            <li>每月按 30 天计算。月产出按当前全网难度与区块奖励测算（鱼池口径公式），已扣矿池手续费；难度上升会降低单台产出。</li>
-            <li>月净收益为扣除运营成本后的净利润结果。本页仅展示<b>产出、收益与回本周期</b>，不列示成本与投入明细；具体合作方案请联系公司获取报价。</li>
-            <li>回本周期已计入下一次减半（约 <b>2028 年 4 月</b>，区块 1,050,000，区块奖励 3.125 → 1.5625 BTC）：减半当月收入降至 50%，其后 12 个月逐步恢复至恢复系数（默认 65%，可在上方滑动调节）。</li>
-            <li>币价情景（$60,000 / $85,000 / $120,000 与滑块任意价位）为假设情景，并非价格预测；币价能否达到、何时达到均无法保证。</li>
+            <li>每月按 30 天计算；月产出按当前全网难度与区块奖励测算（鱼池口径），已扣矿池手续费，难度上升会降低产出。</li>
+            <li>月净收益已扣除运营成本。本页只展示<b>产出、收益与回本周期</b>，成本与投入明细请联系公司获取报价。</li>
+            <li>回本周期已计入下一次减半（约 <b>2028 年 4 月</b>，奖励 3.125 → 1.5625 BTC）：当月收入降至 50%，其后 12 个月逐步恢复至恢复系数（默认 65%，可上方调节）。</li>
+            <li>币价情景为假设值，并非价格预测，不保证达到。</li>
             <li>未计入停机维护、折旧与税费；结果仅供参考，不构成收益承诺。</li>
-            <li>数据来源：币价、全网算力、难度、区块高度与美元/卢布汇率由公司生产行情接口 api.x-mining.ru 统一提供（后端聚合多家交易所与全网数据，每分钟更新），页面顶部如实标注币价来源；下次难度调整幅度由 mempool.space 估算，暂不可得时只显示剩余区块数。实时源全部不可用时，页面回落到 <b>2026-11-27 构建时快照</b>并标注「快照数据」与时间，不假装实时。下次减半预计按标准 10 分钟/块口径推算（剩余区块数 × 600 秒）。</li>
+            <li>数据来源：行情由公司接口 api.x-mining.ru 提供（每分钟更新），币价来源标注于页面顶部；下次难度调整幅度由 mempool.space 估算。实时源不可用时回落到 <b>2026-11-27 快照</b>并标注，不假装实时；减半时间按剩余区块 × 600 秒推算。</li>
           </ul>
         </div>
 
         <div class="sub-head"><h3 data-zh="减半行情：前两次减半后的实际情况" data-ru="Халвинг: что происходило после двух предыдущих сокращений награды">减半行情：前两次减半后的实际情况</h3></div>
-        <p class="halving-lede" data-zh="比特币已历经四次减半。离现在最近的两次——2020 年与 2024 年——走势高度相似：减半当刻单位算力收入直接减半，但没有停留在减半水平；低能效矿机与高电价矿场退出后，全网难度下调、手续费占比上升，币价其后走强，存续矿机的收入逐步恢复。两次被淘汰的都不是挖矿本身，而是老旧高耗机型与高成本电力。" data-ru="В сети Bitcoin уже произошло четыре халвинга. Два последних — 2020 и 2024 годов — развивались очень похоже: в момент халвинга доход на единицу хешрейта сокращался вдвое, но не оставался на этом уровне. После выхода малоэффективных майнеров и площадок с дорогой электроэнергией сложность сети снижалась, доля комиссий в доходе росла, а цена BTC впоследствии укреплялась, и доход оставшихся майнеров постепенно восстанавливался. В обоих циклах рынок покидали не майнинг как таковой, а устаревшее энергоёмкое оборудование и дорогая электроэнергия.">比特币已历经四次减半。离现在最近的两次——2020 年与 2024 年——走势高度相似：减半当刻单位算力收入直接减半，但没有停留在减半水平；低能效矿机与高电价矿场退出后，全网难度下调、手续费占比上升，币价其后走强，存续矿机的收入逐步恢复。两次被淘汰的都不是挖矿本身，而是老旧高耗机型与高成本电力。</p>
+        <p class="halving-lede" data-zh="比特币已历经四次减半。最近两次（2020、2024）走势相似：减半当刻单位算力收入减半，但未停留在该水平——低能效矿机与高电价矿场退出后，难度下调、手续费占比上升、币价走强，存续矿机收入逐步恢复。被淘汰的从来不是挖矿本身，而是老旧高耗机型与高成本电力。" data-ru="В сети Bitcoin уже было четыре халвинга. Два последних (2020 и 2024) развивались похоже: в момент халвинга доход на единицу хешрейта сокращался вдвое, но не оставался на этом уровне — после ухода малоэффективных майнеров и дорогих площадок сложность снижалась, доля комиссий росла, цена укреплялась, и доход оставшихся майнеров восстанавливался. Рынок покидали не майнинг как таковой, а устаревшее энергоёмкое оборудование и дорогая электроэнергия.">比特币已历经四次减半。最近两次（2020、2024）走势相似：减半当刻单位算力收入减半，但未停留在该水平——低能效矿机与高电价矿场退出后，难度下调、手续费占比上升、币价走强，存续矿机收入逐步恢复。被淘汰的从来不是挖矿本身，而是老旧高耗机型与高成本电力。</p>
 
         <div class="equip-grid halving-points">
           <div class="equip">
@@ -1022,7 +1028,7 @@
           </div>
         </div>
 
-        <p class="halving-note" data-zh="对下一次减半（预计 2028 年 4 月，区块 1,050,000，奖励由 3.125 降至 1.5625 BTC），我们的完整测算按同一历史规律处理：36 个月现金流中，减半后收入先按减半产出计算、再逐步恢复，而不是用当前产出一路外推。按前两次的经验，决定减半后能否存续的是能效与电价：本项目选用 S21（约 17.5 J/T），并以天然气自发电锁定低成本电力——到 2028 年减半时，S21 的市场位置大致相当于 2024 年的 S19 XP，处于中档偏上，依托低电价可稳定运行。" data-ru="К следующему халвингу (ожидается в апреле 2028 года, блок 1 050 000, награда снизится с 3,125 до 1,5625 BTC) полная расчётная модель применяет ту же историческую логику: в 36-месячном денежном потоке доход после халвинга сначала считается по сокращённой добыче и затем постепенно восстанавливается, а не экстраполируется по текущему уровню. Опыт двух предыдущих халвингов показывает: выживание после халвинга определяют энергоэффективность и цена электроэнергии. Проект использует S21 (около 17,5 J/T) и собственную газовую генерацию с низкой себестоимостью энергии; к халвингу 2028 года позиция S21 на рынке будет примерно соответствовать позиции S19 XP в 2024 году — средний-верхний сегмент, стабильная работа при низкой цене электроэнергии.">对下一次减半（预计 2028 年 4 月，区块 1,050,000，奖励由 3.125 降至 1.5625 BTC），我们的完整测算按同一历史规律处理：36 个月现金流中，减半后收入先按减半产出计算、再逐步恢复，而不是用当前产出一路外推。按前两次的经验，决定减半后能否存续的是能效与电价：本项目选用 S21（约 17.5 J/T），并以天然气自发电锁定低成本电力——到 2028 年减半时，S21 的市场位置大致相当于 2024 年的 S19 XP，处于中档偏上，依托低电价可稳定运行。</p>
+        <p class="halving-note" data-zh="下一次减半（预计 2028 年 4 月，奖励 3.125 → 1.5625 BTC）测算按同一规律处理：减半后收入先按减半产出计、再逐步恢复，不按当前产出一路外推。决定存续的是能效与电价：本项目 S21（约 17.5 J/T）配天然气自发电低成本电力，到 2028 年位置约相当于 2024 年的 S19 XP，中档偏上，可稳定运行。" data-ru="К следующему халвингу (ожидается в апреле 2028 года, награда 3,125 → 1,5625 BTC) расчёт применяет ту же логику: доход после халвинга сначала считается по сокращённой добыче и затем восстанавливается, без экстраполяции текущего уровня. Выживание определяют энергоэффективность и цена энергии: S21 (около 17,5 J/T) с собственной газовой генерацией к 2028 году займёт позицию примерно S19 XP в 2024 году — средний-верхний сегмент, стабильная работа.">下一次减半（预计 2028 年 4 月，奖励 3.125 → 1.5625 BTC）测算按同一规律处理：减半后收入先按减半产出计、再逐步恢复，不按当前产出一路外推。决定存续的是能效与电价：本项目 S21（约 17.5 J/T）配天然气自发电低成本电力，到 2028 年位置约相当于 2024 年的 S19 XP，中档偏上，可稳定运行。</p>
 
       </div>
     </section>
@@ -1187,14 +1193,6 @@
           var b = enrich(model(p, p.gas2, p.rent2, p.opex2, false, 1), p, p.gas2, p.rent2, p.opex2, false, halvingMonths);
           return { m1: a, m2: b };
         }
-        function incomeFigs(m, isMode1, p, scale) {
-          var k = isMode1 ? 1 - p.share : 1;
-          return { btc: m.keptBtc, revenue: Math.round(m.revenue * (scale || 1) * k) };
-        }
-        function incomeLine(price, source, figs, usd, factorNote) {
-          return "月收入 = $" + fmt(price) + "（" + source + "）× " + figs.btc.toFixed(4) + " BTC × " + fmt(usd, 2) + " ¥/$" + (factorNote || "") + " = ¥" + fmt(figs.revenue);
-        }
-
         /* ---------- 构建快照（2026-11-27 14:11 北京时间实测：OKX 币价、mempool.space 全网数据） ---------- */
         var SNAP = { price: 61905, hash: 1035.8, diff: 145088938867954, height: 977760, atText: "2026-11-27 14:11", adj: { pct: -4.84, remainingBlocks: 2009 } };
         var S = {
@@ -1315,13 +1313,12 @@
           /* hero */
           $("rcHeroBtn1").setAttribute("aria-pressed", heroMode === 1 ? "true" : "false");
           $("rcHeroBtn2").setAttribute("aria-pressed", heroMode === 2 ? "true" : "false");
-          var heroFigs = incomeFigs(h, heroMode === 1, p);
           $("rcHOut").textContent = h.keptBtc.toFixed(4) + " BTC";
-          $("rcHOutSub").textContent = heroMode === 1 ? "矿池按 79% / 21% 自动分币，此为投资者实际到账" : "产出全部归投资者，此为实际到账";
-          $("rcHDiffNote").textContent = "按当前全网难度 " + fmt(S.diff / 1e12, 2) + " T 测算：产出与难度成反比，难度上调后产出会相应减少";
+          $("rcHOutSub").textContent = heroMode === 1 ? "矿池按 79% / 21% 自动分币，此为实际到账" : "产出全部归投资者，此为实际到账";
+          $("rcHOutCost").textContent = "每月现金流支出 ¥" + fmt(heroMode === 1 ? h.costs * (1 - p.share) : h.costs);
+          $("rcHDiffNote").textContent = "按当前难度 " + fmt(S.diff / 1e12, 2) + " T 测算：产出与难度成反比，难度上调产出相应减少";
           $("rcHNet").textContent = "¥" + fmt(h.net);
           $("rcHNetYear").textContent = "年化约 ¥" + fmt(h.net * 12) + "（静态测算）";
-          $("rcHInc").textContent = incomeLine(S.price, S.priceSource || "实时源", heroFigs, p.usd);
           $("rcHPb").textContent = !isFinite(h.paybackH) ? (h.netR <= 0 ? "减半后无法回本" : "无法回本") : h.paybackH > 120 ? "实际难以回本" : fmt(h.paybackH, 1) + " 个月";
           $("rcHPbSub").textContent = "已计入减半（冲击后 12 个月恢复至 " + recoveryPct + "%）" + (isFinite(h.payback) ? " · 不计减半约 " + fmt(h.payback, 1) + " 个月" : "");
 
@@ -1329,18 +1326,18 @@
           if ($("rcSettleTitle")) {
             if (heroMode === 1) {
               $("rcSettleTitle").textContent = "模式一 · 分成结算方法";
-              $("rcSettleIntro").textContent = "分成结算无需持续关注币价，亦无需月末对账。矿池自动分币、运营负担按比例分摊，两步即可完成结算；币价波动不影响分成比例，无需重新计算。";
+              $("rcSettleIntro").textContent = "矿池自动分币、运营负担按比例分摊，两步完成结算；分成比例不随币价波动，无需月末对账。";
               $("rcSettleStepsTitle").textContent = "每月结算两步";
-              $("rcSettleSteps").innerHTML = "<li><b>分币：</b>矿池按 <b>79% / 21%</b> 自动分币——投资者获得当月产出的 79%，公司获得 21%，到账即完成结算，无需人工计算。</li>"
-                + "<li><b>分担：</b>当月运营负担由投资者承担 <b>79%</b>，公司承担其余 <b>21%</b>。</li>";
-              $("rcSettlePrinciple").innerHTML = "上述方式实现净利润分成 21% 的原理如下：公司获得 21% 的收入（币）、承担 21% 的运营负担，净得金额恰为<b>净利润的 21%</b>；投资者净得 79%。币价涨跌仅改变金额、不改变比例，因此<b>无需参考价、无需月末对账、无超额退还</b>，每月结算流程保持一致。";
+              $("rcSettleSteps").innerHTML = "<li><b>分币：</b>矿池按 <b>79% / 21%</b> 自动分币——投资者得 79%，公司得 21%，到账即结算。</li>"
+                + "<li><b>分担：</b>运营负担投资者承担 <b>79%</b>，公司承担 <b>21%</b>。</li>";
+              $("rcSettlePrinciple").innerHTML = "原理：公司得 21% 收入、担 21% 运营负担，净得恰为<b>净利润的 21%</b>，投资者净得 79%。币价涨跌只改金额、不改比例，<b>无需参考价、无需月末对账、无超额退还</b>。";
             } else {
               $("rcSettleTitle").textContent = "模式二 · 自营结算方法";
-              $("rcSettleIntro").textContent = "自营结算不做分成：产出全部归投资者，运营成本由投资者全额承担。公司按月出账，投资者核对后结算；币价与难度变化直接反映在当月净收益上，需按月对账。";
+              $("rcSettleIntro").textContent = "不做分成：产出全部归投资者，运营成本由投资者全额承担。公司按月出账，核对后结算，需按月对账。";
               $("rcSettleStepsTitle").textContent = "每月结算两步";
-              $("rcSettleSteps").innerHTML = "<li><b>产出归集：</b>矿池产出 <b>100% 归投资者</b>——当月挖出的币全部进入投资者账户，公司不参与分币，到账即为投资者收入。</li>"
-                + "<li><b>成本结算：</b>当月燃气、机油及维保耗材、场地租金与运维费按<b>模式二客户口径</b>计费（气价与运维费高于模式一成本口径），由投资者<b>全额承担</b>，凭公司月度账单核对后支付。</li>";
-              $("rcSettlePrinciple").innerHTML = "模式二的净收益即为<b>当月产出价值 − 当月全部运营成本</b>：公司不抽成，投资者独享全部上行收益，也独立承担币价下跌、难度上调时成本不变带来的盈亏波动。因此模式二<b>需要参考币价、需要月末对账</b>，每月以实际用量与账单为准完成结算，与模式一的自动分币免对账方式不同。";
+              $("rcSettleSteps").innerHTML = "<li><b>产出归集：</b>矿池产出 <b>100% 归投资者</b>，公司不参与分币，到账即为投资者收入。</li>"
+                + "<li><b>成本结算：</b>当月燃气、机油及维保耗材、租金与运维费按<b>模式二客户口径</b>计费，由投资者<b>全额承担</b>，凭月度账单核对后支付。</li>";
+              $("rcSettlePrinciple").innerHTML = "净收益 = <b>当月产出价值 − 当月全部运营成本</b>：公司不抽成，投资者独享上行收益，也自担币价下跌、难度上调的波动。因此模式二<b>需要参考币价、需要月末对账</b>，与模式一的自动分币免对账不同。";
             }
           }
 
@@ -1355,7 +1352,6 @@
           var ties = (netTie ? 1 : 0) + (netRTie ? 1 : 0) + (pbTie ? 1 : 0) + (pbHTie ? 1 : 0);
           var losses = 4 - wins - ties, netDiff = m1.net - m2.net;
           $("rcCompareSummary").textContent = "在相同设备配置与同一实时币价条件下进行对比。模式一 " + wins + " 项占优" + (losses ? "、" + losses + " 项落后" : "") + (ties ? "、" + ties + " 项持平" : "") + "。";
-          var srcL = S.priceSource || "实时源";
           var L1 = "模式一 · 合作分成", L2 = "模式二 · 自营租赁", LS = "说明";
           function row(metric, c1, c2, adv, advTie, c1win) {
             return "<tr><td class='rc-metric'>" + metric + "</td><td data-l='" + L1 + "' class='rc-col-m1'>" + c1 + (c1win ? "<span class='rc-win'>更高</span>" : "") + "</td><td data-l='" + L2 + "'>" + c2 + "</td><td data-l='" + LS + "' class='rc-adv" + (advTie ? " tie" : "") + "'>" + adv + "</td></tr>";
@@ -1363,17 +1359,15 @@
           function rowPb(metric, c1, c2, adv, advTie, c1win) {
             return "<tr><td class='rc-metric'>" + metric + "</td><td data-l='" + L1 + "' class='rc-col-m1'>" + c1 + (c1win ? "<span class='rc-win'>更快</span>" : "") + "</td><td data-l='" + L2 + "'>" + c2 + "</td><td data-l='" + LS + "' class='rc-adv" + (advTie ? " tie" : "") + "'>" + adv + "</td></tr>";
           }
-          var f1 = incomeFigs(m1, true, p), f2 = incomeFigs(m2, false, p);
-          var f1r = incomeFigs(m1, true, p, recovery), f2r = incomeFigs(m2, false, p, recovery);
           var html = "";
-          html += row("每月产出（投资者实际获得）", m1.keptBtc.toFixed(4) + " BTC", m2.keptBtc.toFixed(4) + " BTC", "模式一由矿池按 79% / 21% 自动分币；模式二产出 100% 归投资者", true, false);
+          html += row("每月产出（投资者实际获得）", m1.keptBtc.toFixed(4) + " BTC<span class='rc-cf-note'>每月现金流支出 ¥" + fmt(m1.costs * (1 - p.share)) + "</span>", m2.keptBtc.toFixed(4) + " BTC<span class='rc-cf-note'>每月现金流支出 ¥" + fmt(m2.costs) + "</span>", "模式一由矿池按 79% / 21% 自动分币；模式二产出 100% 归投资者", true, false);
           html += row("每月净利润（单台机组）",
-            "¥" + fmt(m1.net) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f1, p.usd) + "</span>",
-            "¥" + fmt(m2.net) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f2, p.usd) + "</span>",
+            "¥" + fmt(m1.net),
+            "¥" + fmt(m2.net),
             netTie ? "基本持平" : netDiff > 0 ? "每月高 ¥" + fmt(netDiff) + " · 年高约 ¥" + fmt(netDiff * 12) : "每月低 ¥" + fmt(-netDiff) + " · 年低约 ¥" + fmt(-netDiff * 12), !netWin, netWin);
           html += row("减半后月净利润（恢复后稳态）",
-            "¥" + fmt(m1.netR) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f1r, p.usd, " × " + recoveryPct + "%（恢复后）") + "</span>",
-            "¥" + fmt(m2.netR) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f2r, p.usd, " × " + recoveryPct + "%（恢复后）") + "</span>",
+            "¥" + fmt(m1.netR),
+            "¥" + fmt(m2.netR),
             netRTie ? "基本持平" : netRWin ? "减半恢复后模式一月净利更高" : "减半恢复后模式二月净利更高", !netRWin, netRWin);
           html += rowPb("回本周期（不计减半）", fmtPayback(m1.payback, m1.net), fmtPayback(m2.payback, m2.net), pbTie ? "基本持平" : pbWin ? "模式一回本更快" : "模式二回本更快", !pbWin, pbWin);
           html += rowPb("回本周期（计入减半 · 含恢复）", fmtPayback(m1.paybackH, m1.netR), fmtPayback(m2.paybackH, m2.netR), pbHTie ? "基本持平" : pbHWin ? "计入减半后模式一回本更快" : "计入减半后模式二回本更快", !pbHWin, pbHWin);
@@ -1904,6 +1898,10 @@
           if (lastFocus && lastFocus.focus) lastFocus.focus();
         }
         if (openBtn) openBtn.addEventListener("click", openPanel);
+        var heroWx = $("heroWxOpen");
+        if (heroWx) heroWx.addEventListener("click", function () { openPanel(); });
+        var ctaWx = $("ctaWxOpen");
+        if (ctaWx) ctaWx.addEventListener("click", function () { openPanel(); });
         closeBtn.addEventListener("click", closePanel);
         overlay.addEventListener("click", function (e) { if (e.target === overlay) closePanel(); });
         document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !overlay.hidden) closePanel(); });
