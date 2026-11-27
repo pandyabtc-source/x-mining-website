@@ -200,6 +200,37 @@
       .contact-cta p { margin: 0; flex: 1 1 320px; font-size: 15.5px; color: #c2d5e5; }
       .contact-cta p b { color: #fff; display: block; font-size: 18px; margin-bottom: 4px; font-family: Montserrat, "Noto Sans SC", sans-serif; font-weight: 700; }
 
+      /* ---------- investment plan / payback ---------- */
+      .equip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      @media (max-width: 820px) { .equip-grid { grid-template-columns: 1fr; } }
+      .equip {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+        padding: 20px 18px 16px;
+      }
+      .equip .lbl { font-size: 13px; color: var(--ink-faint); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+      .equip .name {
+        margin-top: 6px; font-family: Montserrat, "Noto Sans SC", sans-serif;
+        font-weight: 700; font-size: 19px; color: #fff; line-height: 1.4;
+      }
+      .equip ul { margin: 10px 0 2px; padding-left: 18px; color: var(--ink-soft); font-size: 14.5px; line-height: 1.65; }
+      .plan-stats { margin-top: 14px; }
+      .point .stat {
+        margin-top: 4px; font-family: Montserrat, "Noto Sans SC", sans-serif;
+        font-size: 26px; font-weight: 700; color: var(--accent); line-height: 1.3;
+      }
+      .point .stat .unit { font-size: 14px; font-weight: 600; }
+      table.modes.scenario { margin-top: 26px; }
+      table.modes.scenario tbody th {
+        font-family: Montserrat, "Noto Sans SC", sans-serif; font-weight: 700;
+        font-size: 19px; color: #fff; white-space: nowrap;
+      }
+      .plan-note { margin: 16px 0 0; font-size: 13.5px; line-height: 1.65; color: var(--ink-faint); }
+      .sub-head { display: flex; align-items: baseline; gap: 12px; margin: 38px 0 12px; }
+      .sub-head h3 { margin: 0; font-family: Montserrat, "Noto Sans SC", sans-serif; font-size: clamp(19px, 2.6vw, 23px); font-weight: 700; color: #fff; }
+      .halving-lede { max-width: 820px; color: var(--ink-soft); margin: 0; line-height: 1.7; }
+      .halving-points { margin-top: 14px; }
+      .halving-note { margin: 16px 0 0; max-width: 900px; color: var(--ink-soft); font-size: 14.5px; line-height: 1.7; }
+
       /* ---------- contacts / footer ---------- */
       .contacts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
       @media (max-width: 900px) { .contacts { grid-template-columns: 1fr; } }
@@ -216,6 +247,143 @@
       footer .brandline { color: #fff; font-family: Montserrat, "Noto Sans SC", sans-serif; letter-spacing: .08em; font-size: 16px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
       footer .brandline img { height: 30px; width: auto; display: block; }
       footer a { color: #c6d6e4; }
+
+      /* ---------- 收益测算（精简版 · 实时模型） ---------- */
+      .rc { --rc-m1: #3fe3c5; --rc-m2: #8fd0e8; --rc-bad: #ff8a7a; --rc-soft: #0a2036; --rc-grid: #1d3a52; --rc-chartink: #84a0b6; margin-top: 26px; }
+      .rc-small { font-size: 13px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+      .rc-small b { color: var(--ink); }
+      .rc-livebar {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        padding: 14px 16px; display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px 18px;
+      }
+      .rc-live-top { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+      .rc-badge {
+        display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700;
+        padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line);
+        background: var(--surface-2); color: var(--ink-soft);
+      }
+      .rc-badge .rc-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-soft); flex: none; }
+      .rc-badge.on { color: var(--accent); border-color: rgba(63, 227, 197, 0.45); }
+      .rc-badge.on .rc-dot { background: var(--accent); box-shadow: 0 0 8px rgba(63, 227, 197, 0.8); }
+      .rc-badge.off { color: var(--rc-bad); }
+      .rc-badge.off .rc-dot { background: var(--rc-bad); }
+      .rc-btn {
+        appearance: none; border: 1px solid rgba(63, 227, 197, 0.5); background: transparent;
+        color: var(--accent); font-size: 13.5px; font-weight: 700; padding: 7px 14px;
+        border-radius: 8px; cursor: pointer; min-height: 36px; text-decoration: none;
+        display: inline-flex; align-items: center;
+      }
+      .rc-btn:disabled { opacity: 0.55; cursor: default; }
+      .rc-btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-size: 14.5px; padding: 9px 18px; }
+      .rc-btn-primary:hover { background: var(--accent-hover); }
+      .rc-livebar .rc-item { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+      .rc-livebar .rc-k { font-size: 12.5px; color: var(--ink-soft); }
+      .rc-livebar .rc-v { font-size: 19px; font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; font-family: Montserrat, "Noto Sans SC", sans-serif; }
+      .rc-livebar .rc-v-sm { font-size: 15px; }
+      .rc-livebar .rc-wide { grid-column: span 2; }
+      .rc-livebar .rc-wide .rc-v { white-space: normal; line-height: 1.35; }
+      @media (max-width: 640px) { .rc-livebar .rc-wide { grid-column: span 1; } }
+
+      .rc-panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
+      .rc-sub { margin: 34px 0 12px; }
+      .rc-sub h3 { margin: 0; font-family: Montserrat, "Noto Sans SC", sans-serif; font-size: clamp(19px, 2.6vw, 23px); font-weight: 700; color: #fff; }
+      .rc-sub p { margin: 6px 0 0; color: var(--ink-soft); font-size: 14.5px; max-width: 860px; line-height: 1.65; }
+      .rc-sub p b { color: var(--ink); }
+      .rc-mode-head { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+      .rc-mode-head h3 { margin: 0; font-size: 16px; font-weight: 700; font-family: Montserrat, "Noto Sans SC", sans-serif; }
+      .rc-swatch { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex: none; vertical-align: -1px; }
+      .rc-rec-badge { font-size: 12px; font-weight: 800; color: var(--accent-ink); background: var(--accent); border-radius: 999px; padding: 2px 9px; }
+
+      .rc-bench {
+        margin-top: 22px; background: linear-gradient(180deg, var(--surface-2), var(--surface));
+        border: 1px solid rgba(63, 227, 197, 0.4); border-radius: 10px; padding: 20px;
+      }
+      .rc-bench-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+      .rc-bench-price { font-size: clamp(30px, 6vw, 42px); font-weight: 800; font-variant-numeric: tabular-nums; color: var(--accent); line-height: 1.1; font-family: Montserrat, "Noto Sans SC", sans-serif; }
+      .rc-bench-price-label { font-size: 13px; color: var(--ink-soft); }
+      .rc input[type="range"].rc-price-slider { width: 100%; margin: 18px 0 6px; height: 36px; accent-color: var(--accent); cursor: pointer; }
+      .rc-bench-scale { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+      .rc-tier-row { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+      .rc-tier-row button {
+        appearance: none; cursor: pointer; min-height: 38px; border: 1px solid var(--line);
+        background: var(--surface); color: var(--ink); font-size: 14px; font-weight: 700;
+        padding: 7px 14px; border-radius: 8px; font-variant-numeric: tabular-nums; font-family: inherit;
+      }
+      .rc-tier-row button.active { border-color: var(--accent); color: var(--accent); background: var(--rc-soft); }
+      .rc-bench-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+      @media (max-width: 640px) { .rc-bench-metrics { grid-template-columns: 1fr; } }
+      .rc-bench-mode { border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; background: rgba(7, 24, 43, 0.45); }
+      .rc-bench-mode.m1 { border-color: rgba(63, 227, 197, 0.5); }
+      .rc-bm-net { font-size: 27px; font-weight: 800; font-variant-numeric: tabular-nums; margin-top: 2px; font-family: Montserrat, "Noto Sans SC", sans-serif; }
+      .rc-bm-net span { font-size: 14px; color: var(--ink-soft); font-weight: 400; }
+      .rc-bm-row { display: flex; justify-content: space-between; gap: 10px; font-size: 13.5px; color: var(--ink-soft); margin-top: 6px; }
+      .rc-bm-row b { color: var(--ink); font-variant-numeric: tabular-nums; text-align: right; }
+      .rc-calc-note { display: block; font-size: 12.5px; color: var(--ink-soft); line-height: 1.55; margin-top: 2px; }
+      .rc-recovery-row { display: flex; align-items: center; gap: 14px; margin-top: 18px; flex-wrap: wrap; }
+      .rc-recovery-row label { font-size: 13.5px; color: var(--ink-soft); font-weight: 700; }
+      .rc-recovery-row input[type="range"] { flex: 1 1 180px; height: 32px; accent-color: var(--rc-m2); cursor: pointer; }
+      .rc-recovery-row .rc-rv { font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums; min-width: 48px; }
+      .rc-recovery-row .rc-small { flex: 1 1 260px; }
+
+      .rc-mode-switch { display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap; }
+      .rc-mode-switch button {
+        appearance: none; cursor: pointer; border: 1px solid var(--line); background: var(--surface);
+        color: var(--ink-soft); font-size: 14.5px; font-weight: 700; padding: 9px 16px;
+        border-radius: 999px; min-height: 40px; font-family: inherit;
+      }
+      .rc-mode-switch button[aria-pressed="true"] { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+      .rc-hero { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
+      @media (max-width: 760px) { .rc-hero { grid-template-columns: 1fr; } }
+      .rc-card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+      .rc-card .rc-k { font-size: 13px; color: var(--ink-soft); }
+      .rc-card .rc-big { font-size: clamp(26px, 4.6vw, 34px); font-weight: 800; font-variant-numeric: tabular-nums; margin-top: 4px; line-height: 1.15; font-family: Montserrat, "Noto Sans SC", sans-serif; }
+      .rc-card .rc-sub2 { font-size: 13px; color: var(--ink-soft); margin-top: 5px; line-height: 1.55; }
+      .rc-card .rc-sub2 b { color: var(--ink); }
+
+      .rc-unlock {
+        margin-top: 22px; background: linear-gradient(180deg, var(--surface-2), var(--surface));
+        border: 1px solid rgba(63, 227, 197, 0.55); border-radius: 10px; padding: 20px;
+      }
+      .rc-unlock h3 { margin: 0; font-size: 20px; font-weight: 700; font-family: Montserrat, "Noto Sans SC", sans-serif; }
+
+      .rc table.rc-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+      .rc-table th, .rc-table td { padding: 8px 10px; text-align: right; vertical-align: top; }
+      .rc-table th:first-child, .rc-table td:first-child { text-align: left; }
+      .rc-table thead th { color: var(--ink-soft); font-size: 13px; font-weight: 700; border-bottom: 1px solid var(--line); }
+      .rc-table tbody tr + tr td { border-top: 1px solid rgba(29, 58, 82, 0.55); }
+      .rc-table td { font-variant-numeric: tabular-nums; }
+      .rc-table td.rc-metric { font-weight: 700; color: var(--ink); }
+      .rc-table td.rc-col-m1, .rc-table th.rc-col-m1 { background: rgba(63, 227, 197, 0.07); }
+      .rc-table .rc-adv { text-align: left; font-size: 13.5px; color: var(--accent); font-weight: 700; }
+      .rc-table .rc-adv.tie { color: var(--ink-soft); font-weight: 400; }
+      .rc-win { display: inline-block; margin-left: 7px; font-size: 11.5px; font-weight: 800; color: var(--accent-ink); background: var(--accent); border-radius: 999px; padding: 1px 8px; vertical-align: 2px; }
+      .rc-pos { color: var(--rc-m1); }
+      .rc-neg { color: var(--rc-bad); }
+      .rc table.rc-fact td { text-align: left; }
+      .rc table.rc-fact td:first-child { color: var(--ink-soft); width: 18%; white-space: nowrap; }
+      @media (max-width: 760px) {
+        .rc-table thead { display: none; }
+        .rc-table, .rc-table tbody, .rc-table tr, .rc-table td { display: block; width: 100%; }
+        .rc-table td { text-align: left; padding: 5px 10px; }
+        .rc-table tbody tr { padding: 8px 0; }
+        .rc-table tbody tr + tr { border-top: 1px solid var(--line); }
+        .rc-table tbody tr + tr td { border-top: 0; }
+        .rc-table td::before { content: attr(data-l); display: block; font-size: 12.5px; color: var(--accent-dim); margin-bottom: 1px; font-weight: 500; }
+        .rc-table td.rc-metric::before { content: none; }
+        .rc-table td.rc-metric { font-size: 15px; padding-top: 2px; }
+        .rc table.rc-fact td:first-child { width: 100%; }
+      }
+      .rc-cf-row { margin-top: 12px; display: grid; gap: 12px; }
+      .rc-cf-head { display: flex; justify-content: space-between; font-size: 14.5px; margin-bottom: 5px; gap: 10px; }
+      .rc-cf-track { height: 14px; border-radius: 7px; background: var(--rc-soft); overflow: hidden; }
+      .rc-cf-fill { height: 100%; border-radius: 7px; }
+      .rc-chartbox { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
+      .rc-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; font-size: 13px; color: var(--ink-soft); align-items: center; }
+      .rc-legend .rc-swatch { margin-right: 6px; }
+      .rc-notes { margin: 0; padding-left: 20px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.7; }
+      .rc-notes b { color: var(--ink); }
+      .rc-example { margin-top: 14px; background: var(--rc-soft); border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
     </style>
   </head>
   <body data-lang="zh">
@@ -232,6 +400,7 @@
         <nav class="main">
           <a href="#about" data-zh="关于我们" data-ru="О нас">关于我们</a>
           <a href="#modes" data-zh="合作模式" data-ru="Форматы сотрудничества">合作模式</a>
+          <a href="#calc" data-zh="收益测算" data-ru="Расчёт доходности">收益测算</a>
           <a href="#contacts" data-zh="联系我们" data-ru="Контакты">联系我们</a>
         </nav>
       </div>
@@ -352,7 +521,7 @@
     <section class="block" id="modes">
       <div class="wrap">
         <div class="sec-head"><span class="no">03</span><h2 data-zh="合作模式" data-ru="Форматы сотрудничества">合作模式</h2></div>
-        <p class="lede" data-zh="我们提供两种合作结构，下表只列大致的分配比例与合作方式。具体投入、价格与条款请通过邮件联系我们确认，本页不作固定承诺。" data-ru="Мы предлагаем две структуры сотрудничества. В таблице — только примерные пропорции распределения и принципы взаимодействия. Конкретные инвестиции, цены и условия уточняйте по электронной почте; фиксированных обязательств на этой странице мы не указываем.">我们提供两种合作结构，下表只列大致的分配比例与合作方式。具体投入、价格与条款请通过邮件联系我们确认，本页不作固定承诺。</p>
+        <p class="lede" data-zh="两种模式最核心的区别在计价口径：模式一的气价、运维费与场地租金全部按成本价结算，管线等建设费用由公司与投资者共同承担，公司收益来自产出分成；模式二按客户气价结算，运维费、场地租金等也相应上浮，投资者保留全部产出。具体价格与条款请通过邮件联系我们确认，本页不作固定承诺。" data-ru="Ключевое различие двух форматов — база цен. В формате 1 газ, эксплуатация и аренда площадки рассчитываются по себестоимости, затраты на строительство, включая газовую инфраструктуру, компания и инвестор несут совместно, а доход компании формируется из её доли добычи. В формате 2 газ отпускается по клиентской цене, эксплуатация, аренда площадки и прочие услуги тарифицируются соответственно выше, а вся добыча остаётся у инвестора. Конкретные цены и условия уточняйте по электронной почте; фиксированных обязательств на этой странице мы не указываем.">两种模式最核心的区别在计价口径：模式一的气价、运维费与场地租金全部按成本价结算，管线等建设费用由公司与投资者共同承担，公司收益来自产出分成；模式二按客户气价结算，运维费、场地租金等也相应上浮，投资者保留全部产出。具体价格与条款请通过邮件联系我们确认，本页不作固定承诺。</p>
 
         <table class="modes">
           <thead>
@@ -365,8 +534,18 @@
           <tbody>
             <tr>
               <th data-zh="合作方式" data-ru="Принцип">合作方式</th>
-              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="公司为投资者提供成本价天然气，投资者支付运维服务费；公司与投资者共同承担运营，产出按约定比例分成，利益绑定。" data-ru="Компания предоставляет инвестору природный газ по себестоимости, инвестор оплачивает услуги по эксплуатации и обслуживанию; компания и инвестор совместно несут операционную деятельность, добыча делится в согласованной пропорции, интересы сторон связаны.">公司为投资者提供成本价天然气，投资者支付运维服务费；公司与投资者共同承担运营，产出按约定比例分成，利益绑定。</span></td>
+              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="天然气、运维费与场地租金均按成本价结算，管线等建设费用由公司与投资者共同承担；产出按约定比例分成，公司与投资者利益绑定。" data-ru="Газ, эксплуатация и аренда площадки рассчитываются по себестоимости; затраты на строительство, включая газовую инфраструктуру, компания и инвестор несут совместно. Добыча делится в согласованной пропорции — интересы сторон связаны.">天然气、运维费与场地租金均按成本价结算，管线等建设费用由公司与投资者共同承担；产出按约定比例分成，公司与投资者利益绑定。</span></td>
               <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><span data-zh="投资者将发电机组和矿机托管于公司，公司提供场地、发电机组维护与矿机运维托管，投资者自营挖矿，产出全部归投资者。" data-ru="Инвестор размещает генераторные установки и майнеры на площадке компании; компания предоставляет площадку, обслуживание генераторных установок и эксплуатацию майнеров, инвестор ведёт майнинг самостоятельно, вся добыча принадлежит ему.">投资者将发电机组和矿机托管于公司，公司提供场地、发电机组维护与矿机运维托管，投资者自营挖矿，产出全部归投资者。</span></td>
+            </tr>
+            <tr>
+              <th data-zh="计价口径" data-ru="База цен">计价口径</th>
+              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="气价、运维费、场地租金全部按成本口径结算，公司不在成本项上加价，收益来自产出分成。" data-ru="Газ, эксплуатация и аренда площадки полностью рассчитываются по себестоимости: компания не делает наценки на затратные статьи, её доход формируется из доли добычи.">气价、运维费、场地租金全部按成本口径结算，公司不在成本项上加价，收益来自产出分成。</span></td>
+              <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><span data-zh="气价按客户价结算，运维费、场地租金等按客户口径计费，相应高于成本口径；投资者以此换取全部产出。" data-ru="Газ отпускается по клиентской цене; эксплуатация, аренда площадки и прочие услуги также тарифицируются по клиентской базе и соответственно выше себестоимости. Взамен инвестор сохраняет всю добычу.">气价按客户价结算，运维费、场地租金等按客户口径计费，相应高于成本口径；投资者以此换取全部产出。</span></td>
+            </tr>
+            <tr>
+              <th data-zh="建设费用" data-ru="Затраты на строительство">建设费用</th>
+              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="管线等基础设施建设费用由公司与投资者共同承担，按投资单元分摊。" data-ru="Затраты на строительство инфраструктуры, включая газопровод, компания и инвестор несут совместно, с распределением по инвестиционным модулям.">管线等基础设施建设费用由公司与投资者共同承担，按投资单元分摊。</span></td>
+              <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><span data-zh="不设建设费用共同承担：投资者自备发电机组与矿机接入，公司提供现成场地与托管运维。" data-ru="Совместного несения затрат на строительство нет: инвестор размещает собственные генераторные установки и майнеры, компания предоставляет готовую площадку и услуги хостинга.">不设建设费用共同承担：投资者自备发电机组与矿机接入，公司提供现成场地与托管运维。</span></td>
             </tr>
             <tr>
               <th data-zh="产出分配（约）" data-ru="Распределение добычи (примерно)">产出分配（约）</th>
@@ -375,8 +554,8 @@
             </tr>
             <tr>
               <th data-zh="适合情形" data-ru="Кому подходит">适合情形</th>
-              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="希望与公司共担成本与币价波动、长期绑定的合作方。" data-ru="Партнёрам, готовым разделять с компанией затраты и волатильность цены в долгосрочном формате.">希望与公司共担成本与币价波动、长期绑定的合作方。</span></td>
-              <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><span data-zh="希望保留全部产出、自行承担成本与波动的合作方。" data-ru="Партнёрам, которые хотят сохранить всю добычу и самостоятельно нести затраты и риски волатильности.">希望保留全部产出、自行承担成本与波动的合作方。</span></td>
+              <td data-l-zh="模式一 · 分成合作" data-l-ru="Формат 1 · Раздел дохода"><span data-zh="希望以成本价用气、运维与租金，与公司共担建设费用和币价波动、长期绑定的合作方。" data-ru="Партнёрам, которые хотят получать газ, эксплуатацию и аренду по себестоимости, разделять с компанией затраты на строительство и волатильность цены в долгосрочном формате.">希望以成本价用气、运维与租金，与公司共担建设费用和币价波动、长期绑定的合作方。</span></td>
+              <td data-l-zh="模式二 · 托管自营" data-l-ru="Формат 2 · Хостинг"><span data-zh="希望保留全部产出、接受客户口径计费，并自行承担成本与波动的合作方。" data-ru="Партнёрам, которые хотят сохранить всю добычу, готовы к клиентской базе тарифов и самостоятельно несут затраты и риски волатильности.">希望保留全部产出、接受客户口径计费，并自行承担成本与波动的合作方。</span></td>
             </tr>
           </tbody>
         </table>
@@ -388,10 +567,262 @@
       </div>
     </section>
 
-    <!-- ============ CONTACTS ============ -->
-    <section class="block alt" id="contacts">
+    <!-- ============ CALCULATOR ============ -->
+    <section class="block alt" id="calc">
       <div class="wrap">
-        <div class="sec-head"><span class="no">04</span><h2 data-zh="联系我们" data-ru="Контакты">联系我们</h2></div>
+        <div class="sec-head"><span class="no">04</span><h2 data-zh="收益测算" data-ru="Расчёт доходности">收益测算</h2></div>
+        <p class="lede" data-zh="单个投资单元 = 1 台玉柴 300 kW 天然气发电机组 + 63 台比特大陆蚂蚁矿机 S21 200T。本板块按实时行情测算两种合作模式下单台机组的月产出、月净收益与回本周期，已计入下一次比特币减半的影响；拖动滑块可查看任意币价情景。" data-ru="Один инвестиционный модуль — это 1 газогенераторная установка Yuchai 300 кВт и 63 майнера Antminer S21 200T. В этом разделе по актуальным рыночным данным рассчитаны месячная добыча, чистый доход и срок окупаемости одного модуля в двух форматах сотрудничества, с учётом следующего халвинга биткоина; ползунком можно задать любой ценовой сценарий.">单个投资单元 = 1 台玉柴 300 kW 天然气发电机组 + 63 台比特大陆蚂蚁矿机 S21 200T。本板块按实时行情测算两种合作模式下单台机组的月产出、月净收益与回本周期，已计入下一次比特币减半的影响；拖动滑块可查看任意币价情景。</p>
+
+        <div class="equip-grid">
+          <div class="equip">
+            <div class="lbl" data-zh="发电机组 · 每单元 1 台" data-ru="Генераторная установка · 1 на модуль">发电机组 · 每单元 1 台</div>
+            <div class="name" data-zh="玉柴 15L 300 kW 燃气发电机组" data-ru="Газогенераторная установка Yuchai 15L · 300 кВт">玉柴 15L 300 kW 燃气发电机组</div>
+            <ul>
+              <li data-zh="额定功率 300 kW，天然气直接发电供给矿机" data-ru="Номинальная мощность 300 кВт; природный газ напрямую преобразуется в электроэнергию для майнеров">额定功率 300 kW，天然气直接发电供给矿机</li>
+              <li data-zh="每台机组与 63 台矿机组成一个投资单元" data-ru="Одна установка вместе с 63 майнерами образует один инвестиционный модуль">每台机组与 63 台矿机组成一个投资单元</li>
+            </ul>
+          </div>
+          <div class="equip">
+            <div class="lbl" data-zh="矿机 · 每单元 63 台" data-ru="Майнеры · 63 на модуль">矿机 · 每单元 63 台</div>
+            <div class="name" data-zh="蚂蚁 S21 200T（Antminer S21 200T）" data-ru="Antminer S21 200T">蚂蚁 S21 200T（Antminer S21 200T）</div>
+            <ul>
+              <li data-zh="单台算力 200 TH/s，63 台合计约 12,600 TH/s" data-ru="Хешрейт одного майнера — 200 TH/s; суммарно по модулю — около 12 600 TH/s">单台算力 200 TH/s，63 台合计约 12,600 TH/s</li>
+              <li data-zh="选型算力范围：S21 系列单台算力覆盖约 200–270 TH/s，本项目标准配置选用其中的 S21 200T" data-ru="Диапазон выбора: хешрейт одного майнера серии S21 — примерно от 200 до 270 TH/s; стандартная конфигурация проекта — S21 200T">选型算力范围：S21 系列单台算力覆盖约 200–270 TH/s，本项目标准配置选用其中的 S21 200T</li>
+              <li data-zh="能效约 17.5 J/T，属当前一代主流能效水平；单台功耗约 3.6 kW（墙电）" data-ru="Энергоэффективность — около 17,5 J/T, уровень текущего поколения; потребление одного майнера — около 3,6 кВт">能效约 17.5 J/T，属当前一代主流能效水平；单台功耗约 3.6 kW（墙电）</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ===== 收益测算（精简版）：实时模型 · 浏览器端多源拉价，拉不到回落构建快照 ===== -->
+        <div class="rc" id="rcRoot">
+          <div class="rc-livebar" aria-live="polite">
+            <div class="rc-live-top">
+              <span class="rc-badge off" id="rcBadge"><span class="rc-dot"></span><span id="rcBadgeText">快照数据</span></span>
+              <button class="rc-btn" type="button" id="rcRefresh">刷新数据</button>
+            </div>
+            <div class="rc-item"><span class="rc-k">BTC 实时价格</span><span class="rc-v" id="rcPrice">—</span></div>
+            <div class="rc-item"><span class="rc-k">全网算力</span><span class="rc-v" id="rcHash">—</span></div>
+            <div class="rc-item"><span class="rc-k">当前难度</span><span class="rc-v" id="rcDiff">—</span></div>
+            <div class="rc-item"><span class="rc-k">S21 200T 单台日产出</span><span class="rc-v rc-v-sm" id="rcDaily">—</span></div>
+            <div class="rc-item rc-wide"><span class="rc-k">下次减半（预计）</span><span class="rc-v rc-v-sm" id="rcHalving">—</span></div>
+            <div class="rc-item rc-wide"><span class="rc-k">下次难度（预计）</span><span class="rc-v rc-v-sm" id="rcNextDiff">—</span></div>
+            <div class="rc-item"><span class="rc-k">币价更新</span><span class="rc-v rc-v-sm" id="rcPriceAt">—</span></div>
+            <div class="rc-item"><span class="rc-k">全网数据更新于</span><span class="rc-v rc-v-sm" id="rcDailyAt">—</span></div>
+          </div>
+          <p class="rc-small" id="rcSrcLabel" style="margin-top:8px">数据来源：正在连接实时源…</p>
+          <p class="rc-small" id="rcDiffNote" style="margin-top:4px"></p>
+
+          <div class="rc-bench" aria-label="币价情景滑动测算">
+            <div class="rc-bench-head">
+              <div>
+                <div class="rc-bench-price" id="rcBenchPrice">—</div>
+                <div class="rc-bench-price-label" id="rcBenchLabel">当前实时币价 · 拖动滑块切换到情景币价</div>
+              </div>
+              <span class="rc-rec-badge">可滑动测算</span>
+            </div>
+            <input class="rc-price-slider" id="rcPriceSlider" type="range" aria-label="BTC 情景币价（美元）" min="30000" max="150000" step="500" value="61905" />
+            <div class="rc-bench-scale"><span>$30,000</span><span>$90,000</span><span>$150,000</span></div>
+            <div class="rc-tier-row" role="group" aria-label="币价快捷定位" id="rcTierRow">
+              <button type="button" data-price="live" class="active">实时价</button>
+              <button type="button" data-price="60000">$60,000</button>
+              <button type="button" data-price="85000">$85,000</button>
+              <button type="button" data-price="120000">$120,000</button>
+            </div>
+            <div class="rc-bench-metrics">
+              <div class="rc-bench-mode m1">
+                <div class="rc-mode-head"><span class="rc-swatch" style="background:var(--rc-m1)"></span><h3>模式一 · 合作分成</h3><span class="rc-rec-badge">★ 推荐</span></div>
+                <div class="rc-bm-net" id="rcB1Net">—</div>
+                <span class="rc-calc-note" id="rcB1Inc"></span>
+                <div class="rc-bm-row"><span>每月产出（投资者实际获得）</span><b id="rcB1Out">—</b></div>
+                <div class="rc-bm-row"><span>回本周期（计入减半 · 含恢复）</span><b id="rcB1PbH">—</b></div>
+                <div class="rc-bm-row"><span>回本周期（不计减半）</span><b id="rcB1Pb">—</b></div>
+              </div>
+              <div class="rc-bench-mode">
+                <div class="rc-mode-head"><span class="rc-swatch" style="background:var(--rc-m2)"></span><h3>模式二 · 自营租赁</h3></div>
+                <div class="rc-bm-net" id="rcB2Net">—</div>
+                <span class="rc-calc-note" id="rcB2Inc"></span>
+                <div class="rc-bm-row"><span>每月产出（投资者实际获得）</span><b id="rcB2Out">—</b></div>
+                <div class="rc-bm-row"><span>回本周期（计入减半 · 含恢复）</span><b id="rcB2PbH">—</b></div>
+                <div class="rc-bm-row"><span>回本周期（不计减半）</span><b id="rcB2Pb">—</b></div>
+              </div>
+            </div>
+            <div class="rc-recovery-row">
+              <label for="rcRecovery">减半后恢复系数</label>
+              <input id="rcRecovery" type="range" min="50" max="100" step="1" value="65" />
+              <span class="rc-rv" id="rcRecVal">65%</span>
+              <span class="rc-small">减半当月收入降至 50%，其后 12 个月逐步恢复至该系数并保持；默认 65% 取前两次减半中较差的一次，属偏保守情形。</span>
+            </div>
+          </div>
+
+          <div class="rc-mode-switch" role="group" aria-label="选择模式查看核心指标">
+            <button type="button" id="rcHeroBtn1" aria-pressed="true">模式一 · 合作分成 ★推荐</button>
+            <button type="button" id="rcHeroBtn2" aria-pressed="false">模式二 · 自营租赁</button>
+          </div>
+          <div class="rc-hero">
+            <div class="rc-card">
+              <div class="rc-k">每月产出（投资者实际获得）</div>
+              <div class="rc-big" id="rcHOut">—</div>
+              <div class="rc-sub2" id="rcHOutSub"></div>
+              <div class="rc-sub2" id="rcHDiffNote"></div>
+            </div>
+            <div class="rc-card">
+              <div class="rc-k">每月净利润（单台机组）</div>
+              <div class="rc-big" id="rcHNet">—</div>
+              <div class="rc-sub2" id="rcHNetYear"></div>
+              <div class="rc-sub2"><span class="rc-calc-note" id="rcHInc" style="margin-top:0"></span></div>
+            </div>
+            <div class="rc-card">
+              <div class="rc-k">回本周期（计入减半 · 含恢复）</div>
+              <div class="rc-big" id="rcHPb">—</div>
+              <div class="rc-sub2" id="rcHPbSub"></div>
+            </div>
+          </div>
+          <p class="rc-small" style="margin-top:10px">模式一：公司按<b>净利润分成 21%</b>，不设上限——币价下跌、利润收窄时公司分成同步减少，与投资者共担风险；模式二：产出全部归投资者，不涉及分成。两种模式的逐项对比见下方。</p>
+
+          <div class="rc-unlock" aria-label="解锁详细版">
+            <div class="rc-mode-head">
+              <h3>详细版 · 成本与投入明细</h3>
+              <span class="rc-rec-badge">需授权</span>
+            </div>
+            <p class="rc-small" style="margin-top:8px;font-size:14px">详细版包含本页未展示的完整测算：每月成本结构、一次性投入明细与回本基数等。点击下方按钮前往 Telegram 机器人 <b>@Xpandyabot</b> 提交授权申请，经机主审核批准后可进入详细版，<b>每次授权有效期 24 小时</b>，到期需重新申请。</p>
+            <p style="margin:14px 0 0"><a class="rc-btn rc-btn-primary" href="https://t.me/Xpandyabot" target="_blank" rel="noopener">解锁详细版 · Telegram 申请授权</a></p>
+          </div>
+
+          <div class="rc-sub">
+            <h3>模式一与模式二 · 核心指标对比</h3>
+            <p id="rcCompareSummary"></p>
+          </div>
+          <div class="rc-panel">
+            <table class="rc-table rc-compare">
+              <thead><tr><th>核心指标</th><th class="rc-col-m1">模式一 · 合作分成 ★推荐</th><th>模式二 · 自营租赁</th><th style="text-align:left">说明</th></tr></thead>
+              <tbody id="rcCompareBody"></tbody>
+            </table>
+          </div>
+          <div class="rc-panel" style="margin-top:14px" aria-label="每月现金流支出比例对比">
+            <h3 style="margin:0;font-size:16px;font-weight:700">每月现金流支出比例（投资方自付部分）</h3>
+            <p class="rc-small" style="margin-top:6px">以模式二投资方每月现金支出为 100% 基准，模式一按同一模型口径换算：</p>
+            <div class="rc-cf-row">
+              <div>
+                <div class="rc-cf-head"><span><span class="rc-swatch" style="background:var(--rc-m1)"></span>模式一 · 合作分成</span><b id="rcCfPct1">—</b></div>
+                <div class="rc-cf-track" role="img" id="rcCfTrack1"><div class="rc-cf-fill" id="rcCfBar1" style="width:0%;background:var(--rc-m1)"></div></div>
+              </div>
+              <div>
+                <div class="rc-cf-head"><span><span class="rc-swatch" style="background:var(--rc-m2)"></span>模式二 · 自营租赁</span><b>100%（基准）</b></div>
+                <div class="rc-cf-track" role="img" aria-label="模式二每月现金流支出为 100% 基准"><div class="rc-cf-fill" style="width:100%;background:var(--rc-m2)"></div></div>
+              </div>
+            </div>
+            <p style="margin:12px 0 0;font-size:14.5px" id="rcCfText"></p>
+          </div>
+
+          <div class="rc-sub">
+            <h3>币价三档情景 · 收益与回本对照</h3>
+            <p>其余条件（全网难度、算力）按当前实时数据不变，仅币价分别取 $60,000 / $85,000 / $120,000 三档情景测算。情景价格为假设，并非价格预测；拖动上方滑块可查看任意价位。</p>
+          </div>
+          <div class="rc-panel">
+            <table class="rc-table">
+              <thead>
+                <tr><th>币价情景</th><th>模式一 · 月净收益</th><th>模式一 · 回本周期（计入减半）</th><th>模式二 · 月净收益</th><th>模式二 · 回本周期（计入减半）</th></tr>
+              </thead>
+              <tbody id="rcTierBody"></tbody>
+            </table>
+            <p class="rc-small" style="margin-top:10px">低价档下模式一的共担结构使回本更稳；币价越高，模式二不分成的优势越明显。回本周期均已计入减半冲击与恢复路径（恢复系数 <span class="rc-rec-pct">65%</span>）。</p>
+          </div>
+
+          <div class="rc-sub">
+            <h3>减半压力测试：减半前后，两种模式谁更扛得住</h3>
+            <p id="rcStressIntro"></p>
+          </div>
+          <div class="rc-panel">
+            <table class="rc-table rc-compare">
+              <thead><tr><th>压力测试指标</th><th class="rc-col-m1">模式一 · 合作分成 ★推荐</th><th>模式二 · 自营租赁</th><th style="text-align:left">说明</th></tr></thead>
+              <tbody id="rcStressBody"></tbody>
+            </table>
+          </div>
+          <p class="rc-small" style="margin-top:10px">模式一的抗跌来自结构而非预测：收入下降时，公司分得的币与承担的负担同步按 21% 缩放，投资者每月的净收益回落幅度小于收入降幅；模式二收入降多少，净利就降多少。</p>
+
+          <div class="rc-sub">
+            <h3>模式一 · 分成结算方法</h3>
+            <p>分成结算无需持续关注币价，亦无需月末对账。矿池自动分币、运营负担按比例分摊，两步即可完成结算；币价波动不影响分成比例，无需重新计算。</p>
+          </div>
+          <div class="rc-panel">
+            <h3 style="margin:0;font-size:16px;font-weight:700">每月结算两步</h3>
+            <ol style="margin:10px 0 0;padding-left:22px;font-size:15px;line-height:1.65">
+              <li><b>分币：</b>矿池按 <b>79% / 21%</b> 自动分币——投资者获得当月产出的 79%，公司获得 21%，到账即完成结算，无需人工计算。</li>
+              <li><b>分担：</b>当月运营负担由投资者承担 <b>79%</b>，公司承担其余 <b>21%</b>。</li>
+            </ol>
+            <p style="margin:12px 0 0;font-size:14.5px">上述方式实现净利润分成 21% 的原理如下：公司获得 21% 的收入（币）、承担 21% 的运营负担，净得金额恰为<b>净利润的 21%</b>；投资者净得 79%。币价涨跌仅改变金额、不改变比例，因此<b>无需参考价、无需月末对账、无超额退还</b>，每月结算流程保持一致。</p>
+            <div class="rc-example">
+              <h3 style="margin:0;font-size:15px;font-weight:700">举例：某月机组产出 0.1735 BTC</h3>
+              <table class="rc-table rc-fact" style="margin-top:6px">
+                <tbody>
+                  <tr><td>分币</td><td>投资者获得 <b>0.1371 BTC</b>（79%），公司获得 <b>0.0364 BTC</b>（21%），由矿池自动到账</td></tr>
+                  <tr><td>分担</td><td>当月运营负担投资者承担 <b>79%</b>，公司承担 <b>21%</b></td></tr>
+                  <tr><td>结果</td><td>无论当月币价如何变化，公司净得金额均为净利润的 <b>21%</b>，投资者净得 <b>79%</b></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="rc-sub">
+            <h3>回本周期对 BTC 价格的敏感性</h3>
+            <p>其余条件不变 · 已计入减半影响 · 超过 60 个月按 60 显示 · 在图上移动可查看任意价格的回本月数</p>
+          </div>
+          <div class="rc-chartbox">
+            <div id="rcChart"></div>
+            <div class="rc-legend">
+              <span><span class="rc-swatch" style="background:var(--rc-m1)"></span>模式一</span>
+              <span><span class="rc-swatch" style="background:var(--rc-m2)"></span>模式二</span>
+            </div>
+          </div>
+
+          <div class="rc-sub"><h3>测算说明</h3></div>
+          <ul class="rc-notes">
+            <li>每月按 30 天计算。月产出按当前全网难度与区块奖励测算（鱼池口径公式），已扣矿池手续费；难度上升会降低单台产出。</li>
+            <li>月净收益为扣除运营成本后的净利润结果。本页仅展示<b>产出、收益与回本周期</b>，不列示成本与投入明细；具体合作方案请联系公司获取报价。</li>
+            <li>回本周期已计入下一次减半（约 <b>2028 年 4 月</b>，区块 1,050,000，区块奖励 3.125 → 1.5625 BTC）：减半当月收入降至 50%，其后 12 个月逐步恢复至恢复系数（默认 65%，可在上方滑动调节）。</li>
+            <li>币价情景（$60,000 / $85,000 / $120,000 与滑块任意价位）为假设情景，并非价格预测；币价能否达到、何时达到均无法保证。</li>
+            <li>未计入停机维护、折旧与税费；结果仅供参考，不构成收益承诺。</li>
+            <li>数据来源：币价由浏览器从多家交易所与聚合源并行竞速拉取（DigiFinex / HTX / Gate / Bitget / Binance / OKX / Coinbase / Kraken / CoinGecko / mempool.space 等），任一可用即更新，页面顶部如实标注实际命中的来源；全网算力、难度与区块高度由 mempool.space 及其镜像、blockchain.info、Blockchair、Blockstream 等来源依次拉取。实时源全部不可用时，页面回落到 <b>2026-11-27 构建时快照</b>并标注「快照数据」与时间，不假装实时。下次减半预计按标准 10 分钟/块口径推算（剩余区块数 × 600 秒）。</li>
+          </ul>
+        </div>
+
+        <div class="sub-head"><h3 data-zh="减半行情：前两次减半后的实际情况" data-ru="Халвинг: что происходило после двух предыдущих сокращений награды">减半行情：前两次减半后的实际情况</h3></div>
+        <p class="halving-lede" data-zh="比特币已历经四次减半。离现在最近的两次——2020 年与 2024 年——走势高度相似：减半当刻单位算力收入直接减半，但没有停留在减半水平；低能效矿机与高电价矿场退出后，全网难度下调、手续费占比上升，币价其后走强，存续矿机的收入逐步恢复。两次被淘汰的都不是挖矿本身，而是老旧高耗机型与高成本电力。" data-ru="В сети Bitcoin уже произошло четыре халвинга. Два последних — 2020 и 2024 годов — развивались очень похоже: в момент халвинга доход на единицу хешрейта сокращался вдвое, но не оставался на этом уровне. После выхода малоэффективных майнеров и площадок с дорогой электроэнергией сложность сети снижалась, доля комиссий в доходе росла, а цена BTC впоследствии укреплялась, и доход оставшихся майнеров постепенно восстанавливался. В обоих циклах рынок покидали не майнинг как таковой, а устаревшее энергоёмкое оборудование и дорогая электроэнергия.">比特币已历经四次减半。离现在最近的两次——2020 年与 2024 年——走势高度相似：减半当刻单位算力收入直接减半，但没有停留在减半水平；低能效矿机与高电价矿场退出后，全网难度下调、手续费占比上升，币价其后走强，存续矿机的收入逐步恢复。两次被淘汰的都不是挖矿本身，而是老旧高耗机型与高成本电力。</p>
+
+        <div class="equip-grid halving-points">
+          <div class="equip">
+            <div class="lbl" data-zh="2020 年减半 · 2020 年 5 月 11 日" data-ru="Халвинг 2020 года · 11 мая 2020">2020 年减半 · 2020 年 5 月 11 日</div>
+            <div class="name" data-zh="区块奖励 12.5 → 6.25 BTC" data-ru="Награда за блок: 12,5 → 6,25 BTC">区块奖励 12.5 → 6.25 BTC</div>
+            <ul>
+              <li data-zh="减半后 72 小时内，单位算力日收入直接减半" data-ru="В первые 72 часа после халвинга доход на единицу хешрейта сократился вдвое">减半后 72 小时内，单位算力日收入直接减半</li>
+              <li data-zh="全网算力由约 137 EH/s 跌至约 87 EH/s，降幅三成以上——约 98 J/T 的 S9 等老机型关机退出" data-ru="Хешрейт сети упал примерно со 137 до 87 EH/s — более чем на треть: отключились устаревшие майнеры, прежде всего S9 с эффективностью около 98 J/T">全网算力由约 137 EH/s 跌至约 87 EH/s，降幅三成以上——约 98 J/T 的 S9 等老机型关机退出</li>
+              <li data-zh="难度随后下调（5 月 20 日约 −6%），存续矿机单台产出回升；手续费占矿工收入一度升至 18–24%" data-ru="Сложность затем снизилась (20 мая — примерно на 6%), добыча на один работающий майнер выросла; доля комиссий в доходе майнеров временно поднималась до 18–24%">难度随后下调（5 月 20 日约 −6%），存续矿机单台产出回升；手续费占矿工收入一度升至 18–24%</li>
+              <li data-zh="币价减半时约 $8,900，年底涨至约 $29,000" data-ru="Цена BTC на момент халвинга — около $8 900, к концу года — около $29 000">币价减半时约 $8,900，年底涨至约 $29,000</li>
+              <li data-zh="结局：S9 退役，S19 成为主力机型，全网算力数月后创新高" data-ru="Итог: S9 ушли из эксплуатации, основной моделью стал S19, а хешрейт сети через несколько месяцев обновил максимум">结局：S9 退役，S19 成为主力机型，全网算力数月后创新高</li>
+            </ul>
+          </div>
+          <div class="equip">
+            <div class="lbl" data-zh="2024 年减半 · 2024 年 4 月 20 日" data-ru="Халвинг 2024 года · 20 апреля 2024">2024 年减半 · 2024 年 4 月 20 日</div>
+            <div class="name" data-zh="区块奖励 6.25 → 3.125 BTC" data-ru="Награда за блок: 6,25 → 3,125 BTC">区块奖励 6.25 → 3.125 BTC</div>
+            <ul>
+              <li data-zh="单位算力日收入由约 $0.098 跌至约 $0.045，跌幅约 54%" data-ru="Доход на единицу хешрейта упал примерно с $0,098 до $0,045 — примерно на 54%">单位算力日收入由约 $0.098 跌至约 $0.045，跌幅约 54%</li>
+              <li data-zh="全网算力未大幅下降：短暂回落后持续创新高；被挤出的是高电价、低能效机型——S19j Pro 在电价高于约 $0.076/度时已无法回本" data-ru="Хешрейт сети существенно не снизился: после краткого отката он продолжил обновлять максимумы. Рынок покидали площадки с дорогой электроэнергией и малоэффективные модели: S19j Pro при цене электроэнергии выше примерно $0,076/кВт·ч уже не окупался">全网算力未大幅下降：短暂回落后持续创新高；被挤出的是高电价、低能效机型——S19j Pro 在电价高于约 $0.076/度时已无法回本</li>
+              <li data-zh="手续费平均约占矿工收入 15%" data-ru="Комиссии составляли в среднем около 15% дохода майнеров">手续费平均约占矿工收入 15%</li>
+              <li data-zh="减半一年后，单位算力收入仍低于减半前约 60%——恢复以年为单位" data-ru="Спустя год после халвинга доход на единицу хешрейта всё ещё был примерно на 60% ниже дохалвингового уровня: восстановление занимает годы">减半一年后，单位算力收入仍低于减半前约 60%——恢复以年为单位</li>
+              <li data-zh="矿机价格随之重估：S19 由约 $15/T 跌至 $3–4/T，S21 由约 $20/T 跌至 $7–9/T" data-ru="Цены на майнеры были переоценены: S19 подешевел примерно с $15/T до $3–4/T, S21 — примерно с $20/T до $7–9/T">矿机价格随之重估：S19 由约 $15/T 跌至 $3–4/T，S21 由约 $20/T 跌至 $7–9/T</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="halving-note" data-zh="对下一次减半（预计 2028 年 4 月，区块 1,050,000，奖励由 3.125 降至 1.5625 BTC），我们的完整测算按同一历史规律处理：36 个月现金流中，减半后收入先按减半产出计算、再逐步恢复，而不是用当前产出一路外推。按前两次的经验，决定减半后能否存续的是能效与电价：本项目选用 S21（约 17.5 J/T），并以天然气自发电锁定低成本电力——到 2028 年减半时，S21 的市场位置大致相当于 2024 年的 S19 XP，处于中档偏上，依托低电价可稳定运行。" data-ru="К следующему халвингу (ожидается в апреле 2028 года, блок 1 050 000, награда снизится с 3,125 до 1,5625 BTC) полная расчётная модель применяет ту же историческую логику: в 36-месячном денежном потоке доход после халвинга сначала считается по сокращённой добыче и затем постепенно восстанавливается, а не экстраполируется по текущему уровню. Опыт двух предыдущих халвингов показывает: выживание после халвинга определяют энергоэффективность и цена электроэнергии. Проект использует S21 (около 17,5 J/T) и собственную газовую генерацию с низкой себестоимостью энергии; к халвингу 2028 года позиция S21 на рынке будет примерно соответствовать позиции S19 XP в 2024 году — средний-верхний сегмент, стабильная работа при низкой цене электроэнергии.">对下一次减半（预计 2028 年 4 月，区块 1,050,000，奖励由 3.125 降至 1.5625 BTC），我们的完整测算按同一历史规律处理：36 个月现金流中，减半后收入先按减半产出计算、再逐步恢复，而不是用当前产出一路外推。按前两次的经验，决定减半后能否存续的是能效与电价：本项目选用 S21（约 17.5 J/T），并以天然气自发电锁定低成本电力——到 2028 年减半时，S21 的市场位置大致相当于 2024 年的 S19 XP，处于中档偏上，依托低电价可稳定运行。</p>
+
+      </div>
+    </section>
+
+    <!-- ============ CONTACTS ============ -->
+    <section class="block" id="contacts">
+      <div class="wrap">
+        <div class="sec-head"><span class="no">05</span><h2 data-zh="联系我们" data-ru="Контакты">联系我们</h2></div>
         <div class="contacts">
           <div class="contact">
             <div class="k" data-zh="公司邮箱" data-ru="E-mail">公司邮箱</div>
@@ -441,6 +872,597 @@
         }
         btnZh.addEventListener('click', function () { setLang('zh'); });
         btnRu.addEventListener('click', function () { setLang('ru'); });
+      })();
+    </script>
+
+    <script>
+      /* ===== 收益测算（精简版）：与完整版同一模型、同一公式在本页运行；
+         币价/算力/难度由浏览器多源竞速拉取，全部失败时回落到构建快照。
+         本页只渲染收入侧结果，不渲染任何成本/投入/押金数字。 ===== */
+      (function () {
+        "use strict";
+        function $(id) { return document.getElementById(id); }
+        if (!$("rcRoot")) return;
+
+        /* ---------- 模型（与完整版 model.ts 逐式一致） ---------- */
+        var HALVING_HEIGHT = 1050000, REWARD_NOW = 3.125;
+        var FIXED = { miners: 63, minerTH: 200, minerPriceRub: 88000, gen: 250000, clearance: 63000, rack: 50000, mainCable: 5400, siteRentPoolRub: 1070000, days: 30 };
+        var INTERNAL = { gas1: 6.31, gas2: 8.01, oil: 0.7115, conv: 3.8, rub: 12.5, usd: 6.7, pool: 0.01, fan: 5, minerKW: 3.6, rent1: 1031, rent2: 4200, opex1: 2000, opex2: 4000, pipe: 44500000, units: 83, depositMonths: 2, share: 0.21 };
+        function fmt(n, d) {
+          if (!isFinite(n)) return "—";
+          d = d || 0;
+          if (Math.abs(n) < Math.pow(10, -d) / 2) n = 0;
+          if (Object.is(n, -0)) n = 0;
+          return n.toLocaleString("zh-CN", { minimumFractionDigits: d, maximumFractionDigits: d });
+        }
+        function halvingInfo(height, nowMs) {
+          var remaining = Math.max(0, HALVING_HEIGHT - height);
+          var ms = remaining * 600000;
+          var months = ms / (30 * 24 * 3600 * 1000);
+          var dt = new Date(nowMs + ms);
+          return { months: months, text: "约 " + dt.getFullYear() + " 年 " + (dt.getMonth() + 1) + " 月 · 剩 " + remaining.toLocaleString("zh-CN") + " 个区块 · 约 " + months.toFixed(1) + " 个月后" };
+        }
+        function dailyPerMiner(p, rewardScale) {
+          if (!(p.diff > 0)) return 0;
+          return (REWARD_NOW * rewardScale * 86400 * (FIXED.minerTH * 1e12)) / (p.diff * 4294967296);
+        }
+        function model(p, gasPrice, rent, opex, isMode1, rewardScale) {
+          var powerKW = FIXED.miners * p.minerKW + p.fan;
+          var kwh = powerKW * 24 * FIXED.days;
+          var gasM3 = kwh / p.conv;
+          var btcGross = dailyPerMiner(p, rewardScale) * FIXED.miners * FIXED.days * (1 - p.pool);
+          var revenue = btcGross * p.price * p.usd;
+          var cElec = (gasM3 * gasPrice) / p.rub;
+          var cOil = (gasM3 * p.oil) / p.rub;
+          var costs = cElec + cOil + rent + opex;
+          var grossProfit = revenue - costs;
+          var siteShare = isMode1 ? Math.max(grossProfit, 0) * p.share : 0;
+          var net = isMode1 ? grossProfit - siteShare : grossProfit;
+          var shareBtc = isMode1 ? btcGross * p.share : 0;
+          var keptBtc = isMode1 ? Math.max(0, btcGross - shareBtc) : btcGross;
+          var pipeShare = isMode1 ? p.pipe / p.rub / p.units : 0;
+          var constructionRent = isMode1 ? (FIXED.siteRentPoolRub * 6) / p.rub / p.units : 0;
+          var deposit = (gasM3 * p.depositMonths * gasPrice) / p.rub;
+          var minerCapex = (FIXED.minerPriceRub / p.rub) * FIXED.miners;
+          var hardware = FIXED.gen + FIXED.clearance + FIXED.rack + FIXED.mainCable + minerCapex;
+          var capex = Math.round(hardware) + Math.round(deposit) + Math.round(pipeShare + constructionRent);
+          var capexEx = capex - Math.round(deposit);
+          var payback = net > 0 ? capexEx / net : Infinity;
+          return { powerKW: powerKW, btcGross: btcGross, revenue: revenue, costs: costs, net: net, keptBtc: keptBtc, capexEx: capexEx, payback: payback, netR: 0, paybackH: Infinity };
+        }
+        function netAtScale(revFull, costs, isMode1, share, s) {
+          var gp = revFull * s - costs;
+          if (!isMode1) return gp;
+          return gp - Math.max(gp, 0) * share;
+        }
+        function factorIntegral(a, b, H, R) {
+          function G(u) {
+            if (u <= 0) return 0;
+            if (u <= 12) return 0.5 * u + ((R - 0.5) * u * u) / 24;
+            return 3 + 6 * R + R * (u - 12);
+          }
+          if (b <= H) return b - a;
+          if (a >= H) return G(b - H) - G(a - H);
+          return H - a + G(b - H);
+        }
+        function paybackPath(capex, revFull, costs, isMode1, share, H, R) {
+          var cum = -capex, prev = cum;
+          for (var i = 1; i <= 1200; i++) {
+            var f = factorIntegral(i - 1, i, H, R);
+            var mn = netAtScale(revFull, costs, isMode1, share, f);
+            cum += mn;
+            if (cum >= 0) {
+              if (mn <= 0) return Infinity;
+              return i - 1 + (0 - prev) / mn;
+            }
+            prev = cum;
+          }
+          return Infinity;
+        }
+        function enrich(m, p, gasPrice, rent, opex, isMode1, halvingMonths) {
+          var rec = model(p, gasPrice, rent, opex, isMode1, p.recovery);
+          m.netR = rec.net;
+          m.paybackH = paybackPath(m.capexEx, m.revenue, m.costs, isMode1, p.share, halvingMonths, p.recovery);
+          return m;
+        }
+        function fmtPayback(pb, netA) {
+          if (!isFinite(pb)) return (typeof netA === "number" && netA <= 0) ? "无法回本（减半后现金流为负）" : "无法回本";
+          if (pb > 120) return "约 " + fmt(pb, 0) + " 个月（实际难以回本）";
+          return fmt(pb, 1) + " 个月";
+        }
+        function baseParams(recovery) {
+          return { price: S.price, hash: S.hash, diff: S.diff, gas1: INTERNAL.gas1, gas2: INTERNAL.gas2, oil: INTERNAL.oil, conv: INTERNAL.conv, rub: INTERNAL.rub, usd: INTERNAL.usd, pool: INTERNAL.pool, fan: INTERNAL.fan, minerKW: INTERNAL.minerKW, rent1: INTERNAL.rent1, rent2: INTERNAL.rent2, opex1: INTERNAL.opex1, opex2: INTERNAL.opex2, pipe: INTERNAL.pipe, units: INTERNAL.units, depositMonths: INTERNAL.depositMonths, share: INTERNAL.share, recovery: recovery };
+        }
+        function bothModes(p, halvingMonths) {
+          var a = enrich(model(p, p.gas1, p.rent1, p.opex1, true, 1), p, p.gas1, p.rent1, p.opex1, true, halvingMonths);
+          var b = enrich(model(p, p.gas2, p.rent2, p.opex2, false, 1), p, p.gas2, p.rent2, p.opex2, false, halvingMonths);
+          return { m1: a, m2: b };
+        }
+        function incomeFigs(m, isMode1, p, scale) {
+          var k = isMode1 ? 1 - p.share : 1;
+          return { btc: m.keptBtc, revenue: Math.round(m.revenue * (scale || 1) * k) };
+        }
+        function incomeLine(price, source, figs, usd, factorNote) {
+          return "月收入 = $" + fmt(price) + "（" + source + "）× " + figs.btc.toFixed(4) + " BTC × " + usd + " ¥/$" + (factorNote || "") + " = ¥" + fmt(figs.revenue);
+        }
+
+        /* ---------- 构建快照（2026-11-27 14:11 北京时间实测：OKX 币价、mempool.space 全网数据） ---------- */
+        var SNAP = { price: 61905, hash: 1035.8, diff: 145088938867954, height: 977760, atText: "2026-11-27 14:11", adj: { pct: -4.84, remainingBlocks: 2009 } };
+        var S = {
+          price: SNAP.price, priceSource: null, priceLive: false, priceAt: null,
+          hash: SNAP.hash, diff: SNAP.diff, height: SNAP.height, timeAvg: 600000,
+          memAdj: { source: "snapshot", pct: SNAP.adj.pct, remainingBlocks: SNAP.adj.remainingBlocks, nextT: SNAP.diff / 1e12 * (1 + SNAP.adj.pct / 100), timeText: "剩 " + fmt(SNAP.adj.remainingBlocks) + " 个区块" },
+          dailySource: null, dailyAt: null, dailyStale: false, dailyIsSnapshot: true, failedSources: []
+        };
+        var sliderPrice = null, recoveryPct = 65, heroMode = 1;
+        var TIERS = [60000, 85000, 120000];
+        var TRIED_ALL = "mempool.space、mempool 镜像、api.mempool.space、mempool.ninja、blockchain.info、Blockchair、Blockstream";
+
+        function formatStamp(ts) {
+          if (!ts) return "—";
+          var d = new Date(ts), pad = function (n) { return (n < 10 ? "0" : "") + n; };
+          return (d.getMonth() + 1) + "月" + d.getDate() + "日 " + pad(d.getHours()) + ":" + pad(d.getMinutes());
+        }
+
+        /* ---------- 渲染 ---------- */
+        function render() {
+          var recovery = recoveryPct / 100;
+          var halving = halvingInfo(S.height, Date.now());
+          var p = baseParams(recovery);
+          var both = bothModes(p, halving.months);
+          var m1 = both.m1, m2 = both.m2;
+          var h = heroMode === 1 ? m1 : m2;
+
+          /* live bar */
+          var badge = $("rcBadge"), badgeText = $("rcBadgeText");
+          if (!S.priceLive && S.dailyIsSnapshot) { badge.className = "rc-badge off"; badgeText.textContent = "快照数据 · 实时源暂不可用"; }
+          else if (S.priceLive && S.dailyIsSnapshot) { badge.className = "rc-badge on"; badgeText.textContent = "币价实时 · 全网数据为快照"; }
+          else if (S.priceLive) { badge.className = "rc-badge on"; badgeText.textContent = "实时数据"; }
+          else { badge.className = "rc-badge off"; badgeText.textContent = "快照数据"; }
+          $("rcPrice").textContent = "$" + fmt(S.price);
+          $("rcHash").textContent = fmt(S.hash, 1) + " EH/s";
+          $("rcDiff").textContent = fmt(S.diff / 1e12, 2) + " T";
+          $("rcDaily").textContent = dailyPerMiner(p, 1).toFixed(8) + " BTC/天";
+          $("rcHalving").textContent = halving.text;
+          var adj = S.memAdj;
+          if (adj && typeof adj.pct === "number" && isFinite(adj.pct)) {
+            var nextT = (typeof adj.nextT === "number" && adj.nextT > 0) ? adj.nextT : (S.diff / 1e12) * (1 + adj.pct / 100);
+            var pctStr = (adj.pct >= 0 ? "+" : "") + fmt(adj.pct, 2) + "%";
+            $("rcNextDiff").textContent = fmt(nextT, 2) + " T（" + pctStr + (adj.source === "estimate" ? " · 估算" : "") + "）· " + adj.timeText;
+          } else if (adj && typeof adj.remainingBlocks === "number") {
+            $("rcNextDiff").textContent = "— · 剩 " + fmt(adj.remainingBlocks) + " 个区块";
+          } else { $("rcNextDiff").textContent = "—"; }
+          $("rcPriceAt").textContent = S.priceAt ? new Date(S.priceAt).toLocaleTimeString("zh-CN", { hour12: false }) : SNAP.atText + "（快照）";
+          $("rcDailyAt").textContent = S.dailyIsSnapshot ? SNAP.atText + "（快照）" : formatStamp(S.dailyAt) + (S.dailyStale ? "（缓存）" : "");
+          var srcLabel = S.priceSource || (!S.priceLive ? "多源均暂不可达（显示构建快照）" : "交易所多源");
+          $("rcSrcLabel").textContent = S.dailyIsSnapshot
+            ? "数据来源：2026-11-27 构建快照（实时源暂不可用）· 币价：" + srcLabel
+            : "数据来源：" + (S.dailySource || "mempool.space") + " · 币价：" + srcLabel;
+          /* difficulty note */
+          var note;
+          if (S.dailyIsSnapshot) {
+            note = "全网数据暂时更新失败（已尝试 " + (S.failedSources.length ? S.failedSources.join("、") : TRIED_ALL) + "，均未能连通），当前显示 2026-11-27 构建快照数据（难度 145.09 T · 算力约 1,036 EH/s · 下次难度约 −4.8%），点「刷新数据」可重试。";
+          } else if (adj && typeof adj.pct === "number" && isFinite(adj.pct)) {
+            var nT = (typeof adj.nextT === "number" && adj.nextT > 0) ? adj.nextT : (S.diff / 1e12) * (1 + adj.pct / 100);
+            var pStr = (adj.pct >= 0 ? "+" : "") + fmt(adj.pct, 2) + "%";
+            var estNote = adj.source === "estimate" ? "（按近期出块速度自行估算，非来源官方数值）" : adj.source === "blockchain" ? "（按 blockchain.info 近期出块时间估算）" : adj.source === "snapshot" ? "（2026-11-27 快照）" : "";
+            note = "预计下次难度 " + fmt(nT, 2) + " T（" + pStr + "）" + estNote + "，" + adj.timeText + "。"
+              + (adj.pct > 0 ? "落地后单台日产出约下降 " + fmt((1 - 1 / (1 + adj.pct / 100)) * 100, 1) + "%。"
+                : adj.pct < 0 ? "落地后单台日产出约上升 " + fmt((1 / (1 + adj.pct / 100) - 1) * 100, 1) + "%。" : "");
+          } else if (adj && typeof adj.remainingBlocks === "number") {
+            note = "下次难度调整还剩 " + fmt(adj.remainingBlocks) + " 个区块（来源未提供调整幅度，本次估算数据暂不可得，幅度为 —）。";
+          } else { note = "下次难度调整数据暂不可用。"; }
+          $("rcDiffNote").textContent = note;
+
+          /* bench */
+          var benchPrice = sliderPrice !== null ? sliderPrice : S.price;
+          var bp = baseParams(recovery); bp.price = benchPrice;
+          var bench = bothModes(bp, halving.months);
+          var sliderActive = sliderPrice !== null;
+          $("rcBenchPrice").textContent = "$" + fmt(benchPrice);
+          $("rcBenchLabel").textContent = sliderActive
+            ? "情景币价（拖动滑块实时重算）· 当前实时价 $" + fmt(S.price)
+            : "当前实时币价 · 拖动滑块切换到情景币价";
+          var slider = $("rcPriceSlider");
+          if (document.activeElement !== slider) slider.value = Math.min(150000, Math.max(30000, benchPrice));
+          var tierBtns = $("rcTierRow").getElementsByTagName("button");
+          for (var ti = 0; ti < tierBtns.length; ti++) {
+            var tv = tierBtns[ti].getAttribute("data-price");
+            var act = tv === "live" ? !sliderActive : sliderPrice === parseFloat(tv);
+            tierBtns[ti].className = act ? "active" : "";
+            if (tv === "live") tierBtns[ti].textContent = "实时价 $" + fmt(S.price);
+          }
+          var srcB = sliderActive ? "情景币价" : (S.priceSource || "实时源");
+          $("rcB1Net").innerHTML = "¥" + fmt(bench.m1.net) + "<span> / 月净收益</span>";
+          $("rcB1Inc").textContent = incomeLine(benchPrice, srcB, incomeFigs(bench.m1, true, bp), bp.usd);
+          $("rcB1Out").textContent = bench.m1.keptBtc.toFixed(4) + " BTC";
+          $("rcB1PbH").textContent = fmtPayback(bench.m1.paybackH, bench.m1.netR);
+          $("rcB1Pb").textContent = isFinite(bench.m1.payback) ? fmt(bench.m1.payback, 1) + " 个月" : "无法回本";
+          $("rcB2Net").innerHTML = "¥" + fmt(bench.m2.net) + "<span> / 月净收益</span>";
+          $("rcB2Inc").textContent = incomeLine(benchPrice, srcB, incomeFigs(bench.m2, false, bp), bp.usd);
+          $("rcB2Out").textContent = bench.m2.keptBtc.toFixed(4) + " BTC";
+          $("rcB2PbH").textContent = fmtPayback(bench.m2.paybackH, bench.m2.netR);
+          $("rcB2Pb").textContent = isFinite(bench.m2.payback) ? fmt(bench.m2.payback, 1) + " 个月" : "无法回本";
+          $("rcRecVal").textContent = recoveryPct + "%";
+
+          /* hero */
+          $("rcHeroBtn1").setAttribute("aria-pressed", heroMode === 1 ? "true" : "false");
+          $("rcHeroBtn2").setAttribute("aria-pressed", heroMode === 2 ? "true" : "false");
+          var heroFigs = incomeFigs(h, heroMode === 1, p);
+          $("rcHOut").textContent = h.keptBtc.toFixed(4) + " BTC";
+          $("rcHOutSub").textContent = "机组总产出 " + h.btcGross.toFixed(4) + " BTC/月（扣矿池费后" + (heroMode === 1 ? "、分成前" : "") + "）";
+          $("rcHDiffNote").textContent = "按当前全网难度 " + fmt(S.diff / 1e12, 2) + " T 测算：产出与难度成反比，难度上调后产出会相应减少";
+          $("rcHNet").textContent = "¥" + fmt(h.net);
+          $("rcHNetYear").textContent = "年化约 ¥" + fmt(h.net * 12) + "（静态测算）";
+          $("rcHInc").textContent = incomeLine(S.price, S.priceSource || "实时源", heroFigs, p.usd);
+          $("rcHPb").textContent = !isFinite(h.paybackH) ? (h.netR <= 0 ? "减半后无法回本" : "无法回本") : h.paybackH > 120 ? "实际难以回本" : fmt(h.paybackH, 1) + " 个月";
+          $("rcHPbSub").textContent = "已计入减半（冲击后 12 个月恢复至 " + recoveryPct + "%）" + (isFinite(h.payback) ? " · 不计减半约 " + fmt(h.payback, 1) + " 个月" : "");
+
+          /* compare */
+          var netWin = m1.net > m2.net, netTie = m1.net === m2.net;
+          var netRWin = m1.netR > m2.netR, netRTie = m1.netR === m2.netR;
+          var pbTie = (isFinite(m1.payback) && isFinite(m2.payback)) ? fmt(m1.payback, 1) === fmt(m2.payback, 1) : m1.payback === m2.payback;
+          var pbWin = !pbTie && m1.payback < m2.payback;
+          var pbHTie = (isFinite(m1.paybackH) && isFinite(m2.paybackH)) ? fmt(m1.paybackH, 1) === fmt(m2.paybackH, 1) : m1.paybackH === m2.paybackH;
+          var pbHWin = !pbHTie && m1.paybackH < m2.paybackH;
+          var wins = (netWin ? 1 : 0) + (netRWin ? 1 : 0) + (pbWin ? 1 : 0) + (pbHWin ? 1 : 0);
+          var ties = (netTie ? 1 : 0) + (netRTie ? 1 : 0) + (pbTie ? 1 : 0) + (pbHTie ? 1 : 0);
+          var losses = 4 - wins - ties, netDiff = m1.net - m2.net;
+          $("rcCompareSummary").textContent = "在相同设备配置与同一实时币价条件下进行对比。模式一 " + wins + " 项占优" + (losses ? "、" + losses + " 项落后" : "") + (ties ? "、" + ties + " 项持平" : "") + "。";
+          var srcL = S.priceSource || "实时源";
+          var L1 = "模式一 · 合作分成", L2 = "模式二 · 自营租赁", LS = "说明";
+          function row(metric, c1, c2, adv, advTie, c1win) {
+            return "<tr><td class='rc-metric'>" + metric + "</td><td data-l='" + L1 + "' class='rc-col-m1'>" + c1 + (c1win ? "<span class='rc-win'>更高</span>" : "") + "</td><td data-l='" + L2 + "'>" + c2 + "</td><td data-l='" + LS + "' class='rc-adv" + (advTie ? " tie" : "") + "'>" + adv + "</td></tr>";
+          }
+          function rowPb(metric, c1, c2, adv, advTie, c1win) {
+            return "<tr><td class='rc-metric'>" + metric + "</td><td data-l='" + L1 + "' class='rc-col-m1'>" + c1 + (c1win ? "<span class='rc-win'>更快</span>" : "") + "</td><td data-l='" + L2 + "'>" + c2 + "</td><td data-l='" + LS + "' class='rc-adv" + (advTie ? " tie" : "") + "'>" + adv + "</td></tr>";
+          }
+          var f1 = incomeFigs(m1, true, p), f2 = incomeFigs(m2, false, p);
+          var f1r = incomeFigs(m1, true, p, recovery), f2r = incomeFigs(m2, false, p, recovery);
+          var html = "";
+          html += row("每月产出（投资者实际获得）", m1.keptBtc.toFixed(4) + " BTC", m2.keptBtc.toFixed(4) + " BTC", "模式一由矿池按 79% / 21% 自动分币；模式二产出 100% 归投资者", true, false);
+          html += row("每月净利润（单台机组）",
+            "¥" + fmt(m1.net) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f1, p.usd) + "</span>",
+            "¥" + fmt(m2.net) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f2, p.usd) + "</span>",
+            netTie ? "基本持平" : netDiff > 0 ? "每月高 ¥" + fmt(netDiff) + " · 年高约 ¥" + fmt(netDiff * 12) : "每月低 ¥" + fmt(-netDiff) + " · 年低约 ¥" + fmt(-netDiff * 12), !netWin, netWin);
+          html += row("减半后月净利润（恢复后稳态）",
+            "¥" + fmt(m1.netR) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f1r, p.usd, " × " + recoveryPct + "%（恢复后）") + "</span>",
+            "¥" + fmt(m2.netR) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f2r, p.usd, " × " + recoveryPct + "%（恢复后）") + "</span>",
+            netRTie ? "基本持平" : netRWin ? "减半恢复后模式一月净利更高" : "减半恢复后模式二月净利更高", !netRWin, netRWin);
+          html += rowPb("回本周期（不计减半）", fmtPayback(m1.payback, m1.net), fmtPayback(m2.payback, m2.net), pbTie ? "基本持平" : pbWin ? "模式一回本更快" : "模式二回本更快", !pbWin, pbWin);
+          html += rowPb("回本周期（计入减半 · 含恢复）", fmtPayback(m1.paybackH, m1.netR), fmtPayback(m2.paybackH, m2.netR), pbHTie ? "基本持平" : pbHWin ? "计入减半后模式一回本更快" : "计入减半后模式二回本更快", !pbHWin, pbHWin);
+          $("rcCompareBody").innerHTML = html;
+
+          /* cash-flow ratio (percentages only) */
+          var pct = m2.costs > 0 ? Math.round(((m1.costs * (1 - p.share)) / m2.costs) * 100) : 0;
+          $("rcCfPct1").textContent = "约 " + pct + "%";
+          $("rcCfBar1").style.width = pct + "%";
+          $("rcCfTrack1").setAttribute("aria-label", "模式一每月现金流支出约为模式二的 " + pct + "%");
+          $("rcCfText").innerHTML = "模式一的运营成本由公司共担 <b>21%</b>，投资方每月现金支出仅为模式二的<b>约 " + pct + "%</b>。币价下跌或减半导致收入下降时，需要自掏腰包补足的现金流也同步更低——支出端先天更轻，是模式一抗风险的另一面。";
+
+          /* tiers */
+          var th = "";
+          TIERS.forEach(function (t) {
+            var tp = baseParams(recovery); tp.price = t;
+            var tb = bothModes(tp, halving.months);
+            th += "<tr><td style='font-weight:700'>$" + fmt(t) + "</td>"
+              + "<td data-l='模式一 · 月净收益' class='" + (tb.m1.net >= 0 ? "rc-pos" : "rc-neg") + "'>¥" + fmt(tb.m1.net) + "</td>"
+              + "<td data-l='模式一 · 回本周期（计入减半）'>" + fmtPayback(tb.m1.paybackH, tb.m1.netR) + "</td>"
+              + "<td data-l='模式二 · 月净收益' class='" + (tb.m2.net >= 0 ? "rc-pos" : "rc-neg") + "'>¥" + fmt(tb.m2.net) + "</td>"
+              + "<td data-l='模式二 · 回本周期（计入减半）'>" + fmtPayback(tb.m2.paybackH, tb.m2.netR) + "</td></tr>";
+          });
+          $("rcTierBody").innerHTML = th;
+          var rpcts = document.querySelectorAll(".rc-rec-pct");
+          for (var ri = 0; ri < rpcts.length; ri++) rpcts[ri].textContent = recoveryPct + "%";
+
+          /* halving stress */
+          $("rcStressIntro").innerHTML = "下一次减半预计在 <b>2028 年 4 月</b>（区块 1,050,000，区块奖励 3.125 → 1.5625 BTC）：减半当月收入直接减半，其后 12 个月按历史规律逐步恢复至减半前的 " + recoveryPct + "%。两种模式面对同一次冲击，差别在分担结构：模式一的产出与运营负担同按 <b>79 / 21</b> 由投资者与公司分担，冲击被双方按同一比例吸收；模式二由投资者独立承担。以下数字与上方测算同一模型、随实时行情即时更新。";
+          var half1 = netAtScale(m1.revenue, m1.costs, true, p.share, 0.5);
+          var half2 = netAtScale(m2.revenue, m2.costs, false, p.share, 0.5);
+          var f1h = incomeFigs(m1, true, p, 0.5), f2h = incomeFigs(m2, false, p, 0.5);
+          var sh = "";
+          sh += row("减半前 · 投资者月净利",
+            "¥" + fmt(m1.net) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f1, p.usd) + "</span>",
+            "¥" + fmt(m2.net) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f2, p.usd) + "</span>", "当前实时行情口径", true, false);
+          sh += row("减半当月 · 投资者月净利（收入减半）",
+            "¥" + fmt(half1) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f1h, p.usd, " × 50%（减半当月）") + "</span>",
+            "¥" + fmt(half2) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f2h, p.usd, " × 50%（减半当月）") + "</span>", "同一冲击下，模式一净利回落更浅", true, half1 >= half2);
+          sh += row("减半后恢复稳态 · 投资者月净利",
+            "¥" + fmt(m1.netR) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f1r, p.usd, " × " + recoveryPct + "%（恢复后）") + "</span>",
+            "¥" + fmt(m2.netR) + "<span class='rc-calc-note'>" + incomeLine(S.price, srcL, f2r, p.usd, " × " + recoveryPct + "%（恢复后）") + "</span>", "恢复至减半前 " + recoveryPct + "% 后的稳态", true, m1.netR >= m2.netR);
+          $("rcStressBody").innerHTML = sh;
+
+          drawChart(p, halving.months);
+        }
+
+        /* ---------- 敏感性图（十字线交互） ---------- */
+        var chartHover = null, chartCtx = null;
+        function rawPb(p, price, isM1, H) {
+          var q = baseParams(p.recovery); q.price = price; q.diff = p.diff;
+          var mb = isM1 ? model(q, q.gas1, q.rent1, q.opex1, true, 1) : model(q, q.gas2, q.rent2, q.opex2, false, 1);
+          return paybackPath(mb.capexEx, mb.revenue, mb.costs, isM1, q.share, H, q.recovery);
+        }
+        function drawChart(p, H) {
+          var W = 460, Hh = 272, L = 46, R = 30, Tp = 20, B = 34;
+          var iw = W - L - R, ih = Hh - Tp - B, lo = 40000, hi = 150000, cap = 60;
+          function X(v) { return L + iw * (v - lo) / (hi - lo); }
+          function Y(v) { return Tp + ih * (1 - v / cap); }
+          function capped(price, isM1) { var v = rawPb(p, price, isM1, H); return isFinite(v) ? Math.min(v, cap) : cap; }
+          function pts(isM1) {
+            var out = [];
+            for (var price = lo; price <= hi; price += 2500) out.push(X(price).toFixed(1) + "," + Y(capped(price, isM1)).toFixed(1));
+            return out.join(" ");
+          }
+          var BIG = 1e6;
+          function val(price, isM1) { var v = rawPb(p, price, isM1, H); return isFinite(v) ? v : BIG; }
+          var crossover = null, prevPrice = lo, prevDiff = val(lo, true) - val(lo, false);
+          for (var pr = lo + 500; pr <= hi && crossover === null; pr += 500) {
+            var d = val(pr, true) - val(pr, false);
+            if (prevDiff < 0 && d >= 0) {
+              var a = prevPrice, b = pr;
+              for (var i = 0; i < 24; i++) { var mid = (a + b) / 2; if (val(mid, true) - val(mid, false) < 0) a = mid; else b = mid; }
+              crossover = (a + b) / 2;
+            }
+            prevDiff = d; prevPrice = pr;
+          }
+          chartCtx = { p: p, H: H, W: W, Hh: Hh, L: L, R: R, Tp: Tp, iw: iw, ih: ih, lo: lo, hi: hi, cap: cap, crossover: crossover };
+          var s = "";
+          s += "<svg id='rcSvg' viewBox='0 0 " + W + " " + Hh + "' role='img' aria-label='回本周期对 BTC 价格敏感性曲线，可移动指针查看任意价格下两种模式的回本月数' style='width:100%;height:auto;display:block;touch-action:pan-y;cursor:crosshair'>";
+          for (var g = 0; g <= 4; g++) {
+            var v = cap * g / 4;
+            s += "<line x1='" + L + "' x2='" + (W - R) + "' y1='" + Y(v) + "' y2='" + Y(v) + "' stroke='#1d3a52'/>";
+            s += "<text x='" + (L - 6) + "' y='" + (Y(v) + 4) + "' text-anchor='end' fill='#84a0b6' font-size='11'>" + fmt(v, 0) + "</text>";
+          }
+          [40000, 70000, 100000, 130000, 150000].forEach(function (xv) {
+            if (xv === 150000) s += "<text x='" + (W - 4) + "' y='" + (Hh - 10) + "' text-anchor='end' fill='#84a0b6' font-size='11'>$150k</text>";
+            else s += "<text x='" + X(xv) + "' y='" + (Hh - 10) + "' text-anchor='middle' fill='#84a0b6' font-size='11'>$" + fmt(xv / 1000, 0) + "k</text>";
+          });
+          s += "<polyline points='" + pts(true) + "' fill='none' stroke='#3fe3c5' stroke-width='2.4' stroke-linejoin='round'/>";
+          s += "<polyline points='" + pts(false) + "' fill='none' stroke='#8fd0e8' stroke-width='2.4' stroke-linejoin='round'/>";
+          if (crossover !== null) {
+            s += "<text x='" + (L + 4) + "' y='" + Y(24) + "' fill='#3fe3c5' font-size='10.5'>← 此区间模式一回本更快</text>";
+            var cy = Y(Math.min(rawPb(p, crossover, true, H), cap));
+            var label = "交叉点 约 $" + fmt(crossover);
+            var lw = label.length * 6.4 + 14;
+            var lx = Math.min(Math.max(X(crossover) - lw / 2, L), W - R - lw);
+            var ly = Math.max(cy - 30, 2);
+            s += "<circle cx='" + X(crossover) + "' cy='" + cy + "' r='4' fill='#04101e' stroke='#f2f8fc' stroke-width='1.6'/>";
+            s += "<rect x='" + lx + "' y='" + ly + "' width='" + lw + "' height='17' rx='4' fill='rgba(13,38,62,0.92)' stroke='#1d3a52'/>";
+            s += "<text x='" + (lx + lw / 2) + "' y='" + (ly + 12.5) + "' text-anchor='middle' fill='#f2f8fc' font-size='10.5'>" + label + "</text>";
+          }
+          s += "<line id='rcGuide' x1='0' x2='0' y1='" + Tp + "' y2='" + (Tp + ih) + "' stroke='#f2f8fc' stroke-width='1' stroke-dasharray='4 4' opacity='0.75'/>";
+          s += "<circle id='rcDot2' r='3.6' fill='#8fd0e8' stroke='#04101e' stroke-width='1.2'/>";
+          s += "<circle id='rcDot1' r='3.6' fill='#3fe3c5' stroke='#04101e' stroke-width='1.2'/>";
+          s += "<g id='rcCard'><rect id='rcCardRect' width='168' height='66' rx='7' fill='rgba(13,38,62,0.97)' stroke='#1d3a52'/>";
+          s += "<text id='rcCardT' x='0' y='0' fill='#f2f8fc' font-size='11.5' font-weight='700'></text>";
+          s += "<circle id='rcCardD1' r='3.2' fill='#3fe3c5'/><text id='rcCardM1' fill='#f2f8fc' font-size='11'></text>";
+          s += "<circle id='rcCardD2' r='3.2' fill='#8fd0e8'/><text id='rcCardM2' fill='#f2f8fc' font-size='11'></text></g>";
+          s += "<text x='4' y='" + (Tp + 4) + "' fill='#84a0b6' font-size='11'>月</text>";
+          s += "</svg>";
+          $("rcChart").innerHTML = s;
+          var svg = $("rcSvg");
+          svg.addEventListener("pointermove", onChartMove);
+          svg.addEventListener("pointerdown", onChartMove);
+          svg.addEventListener("pointerleave", function () { chartHover = null; updateChartOverlay(); });
+          svg.addEventListener("pointercancel", function () { chartHover = null; updateChartOverlay(); });
+          updateChartOverlay();
+        }
+        function onChartMove(e) {
+          var svg = $("rcSvg"); if (!svg || !chartCtx) return;
+          var rect = svg.getBoundingClientRect();
+          if (!rect.width) return;
+          var px = (e.clientX - rect.left) / rect.width * chartCtx.W;
+          var price = chartCtx.lo + (px - chartCtx.L) / chartCtx.iw * (chartCtx.hi - chartCtx.lo);
+          chartHover = Math.min(chartCtx.hi, Math.max(chartCtx.lo, Math.round(price / 100) * 100));
+          updateChartOverlay();
+        }
+        function updateChartOverlay() {
+          if (!chartCtx) return;
+          var c = chartCtx;
+          function X(v) { return c.L + c.iw * (v - c.lo) / (c.hi - c.lo); }
+          function Y(v) { return c.Tp + c.ih * (1 - v / c.cap); }
+          var focus = chartHover !== null ? chartHover : Math.min(c.hi, Math.max(c.lo, S.price));
+          var isCurrent = chartHover === null;
+          var f1 = rawPb(c.p, focus, true, c.H), f2 = rawPb(c.p, focus, false, c.H);
+          function months(v) { return (!isFinite(v) || v >= c.cap) ? "≥60 个月" : fmt(v, 1) + " 个月"; }
+          var fx = X(focus);
+          var guide = $("rcGuide");
+          guide.setAttribute("x1", fx); guide.setAttribute("x2", fx);
+          if (isCurrent) guide.setAttribute("stroke-dasharray", "4 4"); else guide.removeAttribute("stroke-dasharray");
+          var d1 = $("rcDot1"), d2 = $("rcDot2");
+          d1.setAttribute("cx", fx); d1.setAttribute("cy", Y(isFinite(f1) ? Math.min(f1, c.cap) : c.cap));
+          d2.setAttribute("cx", fx); d2.setAttribute("cy", Y(isFinite(f2) ? Math.min(f2, c.cap) : c.cap));
+          var cardW = 168, cardX = fx + 12 + cardW <= c.W - 4 ? fx + 12 : fx - 12 - cardW, cardY = c.Tp + 6;
+          var rect = $("rcCardRect"); rect.setAttribute("x", cardX); rect.setAttribute("y", cardY);
+          var t = $("rcCardT"); t.setAttribute("x", cardX + 10); t.setAttribute("y", cardY + 17);
+          t.textContent = "BTC $" + fmt(focus) + (isCurrent ? " · 现价" : "");
+          var cd1 = $("rcCardD1"); cd1.setAttribute("cx", cardX + 13); cd1.setAttribute("cy", cardY + 33);
+          var m1t = $("rcCardM1"); m1t.setAttribute("x", cardX + 22); m1t.setAttribute("y", cardY + 37);
+          m1t.textContent = "模式一回本 " + months(f1);
+          var cd2 = $("rcCardD2"); cd2.setAttribute("cx", cardX + 13); cd2.setAttribute("cy", cardY + 52);
+          var m2t = $("rcCardM2"); m2t.setAttribute("x", cardX + 22); m2t.setAttribute("y", cardY + 56);
+          m2t.textContent = "模式二回本 " + months(f2);
+        }
+
+        /* ---------- 拉价：多源竞速（与完整版同一组已验证 CORS 的来源） ---------- */
+        function fetchT(url, ms, asText) {
+          return new Promise(function (resolve, reject) {
+            var ctrl = (typeof AbortController !== "undefined") ? new AbortController() : null;
+            var timer = setTimeout(function () { if (ctrl) ctrl.abort(); reject(new Error("timeout")); }, ms);
+            fetch(url, ctrl ? { signal: ctrl.signal } : undefined)
+              .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return asText ? r.text() : r.json(); })
+              .then(function (v) { clearTimeout(timer); resolve(v); })
+              .catch(function (e) { clearTimeout(timer); reject(e); });
+          });
+        }
+        var PRICE_SOURCES = [
+          { name: "DigiFinex", url: "https://openapi.digifinex.com/v3/ticker?symbol=btc_usdt", parse: function (j) { return (j && j.ticker && j.ticker[0]) ? parseFloat(j.ticker[0].last) : NaN; } },
+          { name: "HTX", url: "https://api.huobi.pro/market/detail/merged?symbol=btcusdt", parse: function (j) { return (j && j.tick) ? parseFloat(j.tick.close) : NaN; } },
+          { name: "HTX", url: "https://api-aws.huobi.pro/market/detail/merged?symbol=btcusdt", parse: function (j) { return (j && j.tick) ? parseFloat(j.tick.close) : NaN; } },
+          { name: "Gate.io", url: "https://api.gateio.ws/api/v4/spot/tickers?currency_pair=BTC_USDT", parse: function (j) { return (j && j[0]) ? parseFloat(j[0].last) : NaN; } },
+          { name: "Bitget", url: "https://api.bitget.com/api/v2/spot/market/tickers?symbol=BTCUSDT", parse: function (j) { return (j && j.data && j.data[0]) ? parseFloat(j.data[0].lastPr) : NaN; } },
+          { name: "Binance", url: "https://data-api.binance.vision/api/v3/ticker/price?symbol=BTCUSDT", parse: function (j) { return j ? parseFloat(j.price) : NaN; } },
+          { name: "Binance", url: "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT", parse: function (j) { return j ? parseFloat(j.price) : NaN; } },
+          { name: "Binance.US", url: "https://api.binance.us/api/v3/ticker/price?symbol=BTCUSD", parse: function (j) { return j ? parseFloat(j.price) : NaN; } },
+          { name: "OKX", url: "https://www.okx.com/api/v5/market/ticker?instId=BTC-USDT", parse: function (j) { return (j && j.data && j.data[0]) ? parseFloat(j.data[0].last) : NaN; } },
+          { name: "Coinbase", url: "https://api.exchange.coinbase.com/products/BTC-USD/ticker", parse: function (j) { return j ? parseFloat(j.price) : NaN; } },
+          { name: "Coinbase", url: "https://api.coinbase.com/v2/prices/BTC-USD/spot", parse: function (j) { return (j && j.data) ? parseFloat(j.data.amount) : NaN; } },
+          { name: "Kraken", url: "https://api.kraken.com/0/public/Ticker?pair=XBTUSD", parse: function (j) { var r = j && j.result; if (!r) return NaN; for (var k in r) { var cc = r[k] && r[k].c; if (cc) return parseFloat(cc[0]); } return NaN; } },
+          { name: "Gemini", url: "https://api.gemini.com/v1/pubticker/btcusd", parse: function (j) { return j ? parseFloat(j.last) : NaN; } },
+          { name: "Deribit", url: "https://www.deribit.com/api/v2/public/get_index_price?index_name=btc_usd", parse: function (j) { return (j && j.result) ? parseFloat(j.result.index_price) : NaN; } },
+          { name: "CoinPaprika", url: "https://api.coinpaprika.com/v1/tickers/btc-bitcoin", parse: function (j) { return (j && j.quotes && j.quotes.USD) ? parseFloat(j.quotes.USD.price) : NaN; } },
+          { name: "alternative.me", url: "https://api.alternative.me/v2/ticker/bitcoin/?convert=USD", parse: function (j) { return (j && j.data && j.data["1"] && j.data["1"].quotes && j.data["1"].quotes.USD) ? parseFloat(j.data["1"].quotes.USD.price) : NaN; } },
+          { name: "CoinGecko", url: "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd", parse: function (j) { return (j && j.bitcoin) ? j.bitcoin.usd : NaN; } },
+          { name: "mempool.space", url: "https://mempool.space/api/v1/prices", parse: function (j) { return j ? parseFloat(j.USD) : NaN; } },
+          { name: "blockchain.info", url: "https://blockchain.info/ticker", parse: function (j) { return (j && j.USD) ? parseFloat(j.USD.last) : NaN; } },
+          { name: "mempool.ninja", url: "https://mempool.ninja/api/v1/prices", parse: function (j) { return j ? parseFloat(j.USD) : NaN; } }
+        ];
+        var priceInFlight = false, priceRetries = 0;
+        function fetchPrice() {
+          if (priceInFlight) return;
+          priceInFlight = true;
+          var settled = false, fails = 0;
+          function allFailed() {
+            priceInFlight = false;
+            if (!S.priceLive) render();
+            if (priceRetries < 3) {
+              var delay = [15000, 30000, 60000][priceRetries];
+              priceRetries++;
+              setTimeout(fetchPrice, delay);
+            }
+          }
+          PRICE_SOURCES.forEach(function (src) {
+            fetchT(src.url, 8000).then(function (j) {
+              if (settled) return;
+              var v = src.parse(j);
+              if (isFinite(v) && v > 1000 && v < 1000000) {
+                settled = true; priceInFlight = false; priceRetries = 0;
+                S.price = v; S.priceLive = true; S.priceSource = src.name; S.priceAt = Date.now();
+                render();
+              } else { fails++; if (fails === PRICE_SOURCES.length) allFailed(); }
+            }).catch(function () {
+              if (settled) return;
+              fails++; if (fails === PRICE_SOURCES.length) allFailed();
+            });
+          });
+        }
+
+        /* ---------- 全网数据：mempool 主源/镜像 → blockchain.info → Blockchair → Blockstream ---------- */
+        var dailyInFlight = false;
+        function fetchDaily() {
+          if (dailyInFlight) return;
+          dailyInFlight = true;
+          var btn = $("rcRefresh");
+          if (btn) { btn.disabled = true; btn.textContent = "更新中…"; }
+          var got = { hash: false, diff: false, adj: false, height: false };
+          var contrib = [], failed = [];
+          function mark(s) { if (contrib.indexOf(s) < 0) contrib.push(s); }
+          function markF(s) { if (failed.indexOf(s) < 0) failed.push(s); }
+          function need() { return !(got.hash && got.diff && got.adj); }
+          function mempoolRound(base, label) {
+            var hit = false;
+            var q1 = fetchT(base + "/api/v1/mining/hashrate/3d", 8000).then(function (j) {
+              if (j && j.currentHashrate > 0) { S.hash = j.currentHashrate / 1e18; got.hash = true; hit = true; mark(label); }
+              if (j && j.currentDifficulty > 1e12) { S.diff = j.currentDifficulty; got.diff = true; hit = true; mark(label); }
+              if (j && j.difficulty && j.difficulty.length) { var d = j.difficulty[j.difficulty.length - 1]; if (d && d.height > 0) { S.height = d.height; got.height = true; } }
+            }).catch(function () {});
+            var q2 = fetchT(base + "/api/v1/difficulty-adjustment", 8000).then(function (j) {
+              if (j && isFinite(j.timeAvg) && j.timeAvg > 0) S.timeAvg = j.timeAvg;
+              if (j && isFinite(j.difficultyChange)) {
+                var when = j.estimatedRetargetDate ? new Date(j.estimatedRetargetDate) : null;
+                S.memAdj = { source: "mempool", pct: j.difficultyChange, remainingBlocks: isFinite(j.remainingBlocks) ? Math.round(j.remainingBlocks) : null,
+                  nextT: S.diff / 1e12 * (1 + j.difficultyChange / 100),
+                  timeText: "剩 " + fmt(Math.round(j.remainingBlocks || 0)) + " 个区块" + (when ? " · 约 " + (when.getMonth() + 1) + "月" + when.getDate() + "日" : "") };
+                got.adj = true; hit = true; mark(label);
+              }
+            }).catch(function () {});
+            return Promise.all([q1, q2]).then(function () { if (!hit) markF(label); });
+          }
+          function tryBlockchain() {
+            return fetchT("https://api.blockchain.info/stats", 8000).then(function (j) {
+              if (!j) { markF("blockchain.info"); return; }
+              var ok = false;
+              if (!got.diff && j.difficulty > 1e12) { S.diff = j.difficulty; got.diff = true; ok = true; }
+              if (!got.hash && j.hash_rate > 0) { S.hash = j.hash_rate / 1e9; got.hash = true; ok = true; }
+              if (j.n_blocks_total > 0) { S.height = j.n_blocks_total; got.height = true; }
+              if (j.minutes_between_blocks > 0) S.timeAvg = j.minutes_between_blocks * 60 * 1000;
+              if (!got.adj && isFinite(j.nextretarget) && isFinite(j.n_blocks_total)) {
+                var remaining = Math.max(0, j.nextretarget - j.n_blocks_total);
+                if (j.minutes_between_blocks > 0) {
+                  var pctMin = (10 / j.minutes_between_blocks - 1) * 100;
+                  S.memAdj = { source: "estimate", pct: pctMin, remainingBlocks: remaining, nextT: S.diff / 1e12 * (1 + pctMin / 100), timeText: "剩 " + fmt(remaining) + " 个区块" };
+                } else {
+                  S.memAdj = { source: "blockchain", pct: null, remainingBlocks: remaining, nextT: null, timeText: "剩 " + fmt(remaining) + " 个区块" };
+                }
+                got.adj = true; ok = true;
+              }
+              if (ok) mark("blockchain.info"); else markF("blockchain.info");
+            }).catch(function () { markF("blockchain.info"); });
+          }
+          function tryBlockchair() {
+            return fetchT("https://api.blockchair.com/bitcoin/stats", 8000).then(function (j) {
+              var d = j && j.data;
+              if (!d) { markF("Blockchair"); return; }
+              var ok = false;
+              if (!got.diff && d.difficulty > 1e12) { S.diff = d.difficulty; got.diff = true; ok = true; }
+              var hr = parseFloat(d.hashrate_24h);
+              if (!got.hash && isFinite(hr) && hr > 0) { S.hash = hr / 1e18; got.hash = true; ok = true; }
+              var hgt = (typeof d.best_block_height === "number" && d.best_block_height > 0) ? d.best_block_height : (typeof d.blocks === "number" && d.blocks > 0 ? d.blocks : 0);
+              if (hgt > 0) { S.height = hgt; got.height = true; }
+              if (!got.adj && hgt > 0) {
+                var rem = 2016 - (hgt % 2016); if (rem === 2016) rem = 0;
+                S.memAdj = { source: "blockchair", pct: null, remainingBlocks: rem, nextT: null, timeText: "剩 " + fmt(rem) + " 个区块" };
+                got.adj = true; ok = true;
+              }
+              if (ok) mark("Blockchair"); else markF("Blockchair");
+            }).catch(function () { markF("Blockchair"); });
+          }
+          function tryBlockstream() {
+            return fetchT("https://blockstream.info/api/blocks/tip/height", 6000, true).then(function (t) {
+              var hgt = parseInt(t, 10);
+              if (isFinite(hgt) && hgt > 0) { S.height = hgt; got.height = true; mark("Blockstream"); }
+              else markF("Blockstream");
+            }).catch(function () { markF("Blockstream"); });
+          }
+          var chain = Promise.resolve();
+          [["https://mempool.space", "mempool.space"], ["https://mempool.emzy.de", "mempool 镜像"], ["https://api.mempool.space", "api.mempool.space"], ["https://mempool.ninja", "mempool.ninja"]].forEach(function (b) {
+            chain = chain.then(function () { return need() ? mempoolRound(b[0], b[1]) : null; });
+          });
+          chain = chain.then(function () { return need() ? tryBlockchain() : null; });
+          chain = chain.then(function () { return need() ? tryBlockchair() : null; });
+          chain = chain.then(function () { return got.height ? null : tryBlockstream(); });
+          chain.then(function () {
+            dailyInFlight = false;
+            if (btn) { btn.disabled = false; btn.textContent = "刷新数据"; }
+            if (got.hash || got.diff || got.adj || got.height) {
+              S.dailySource = contrib.join(" + ") || "mempool.space";
+              S.dailyStale = false; S.dailyIsSnapshot = false; S.dailyAt = Date.now();
+            } else {
+              S.failedSources = failed;
+            }
+            render();
+          });
+        }
+
+        /* ---------- 控件 ---------- */
+        $("rcPriceSlider").addEventListener("input", function (e) { sliderPrice = parseFloat(e.target.value); render(); });
+        $("rcRecovery").addEventListener("input", function (e) { recoveryPct = parseFloat(e.target.value); render(); });
+        $("rcTierRow").addEventListener("click", function (e) {
+          var b = e.target;
+          while (b && b.tagName !== "BUTTON") b = b.parentNode;
+          if (!b) return;
+          var v = b.getAttribute("data-price");
+          sliderPrice = v === "live" ? null : parseFloat(v);
+          render();
+        });
+        $("rcHeroBtn1").addEventListener("click", function () { heroMode = 1; render(); });
+        $("rcHeroBtn2").addEventListener("click", function () { heroMode = 2; render(); });
+        $("rcRefresh").addEventListener("click", function () { fetchPrice(); fetchDaily(); });
+
+        render();
+        fetchPrice();
+        fetchDaily();
+        setInterval(fetchPrice, 60000);
       })();
     </script>
   </body>
