@@ -766,8 +766,10 @@
               <div class="rc-unlock-actions">
                 <a class="rc-btn rc-btn-primary" href="https://t.me/Xpandyabot" target="_blank" rel="noopener">Telegram 申请</a>
                 <button class="rc-btn rc-btn-wx" type="button" id="rcWxOpen" aria-haspopup="dialog" aria-controls="rcWxOverlay">微信申请</button>
+                <button class="rc-btn rc-btn-wx" type="button" id="rcRestoreOpenMain" aria-haspopup="dialog" aria-controls="rcWxOverlay">用编号恢复进度</button>
               </div>
               <p class="rc-small" style="margin-top:10px">Telegram 申请：去机器人提交申请，批准后机器人会发一条直达链接，点开即自动解锁本页详细版。</p>
+              <p class="rc-small" style="margin-top:6px">已经提交过申请、但换了设备或清除了浏览器数据？点「用编号恢复进度」，输入申请时得到的编号即可查询审核状态；已批准将直接解锁。</p>
             </div>
             <div id="rcUnlockedBar" hidden>
               <p class="rc-small" style="margin-top:8px;font-size:14.5px"><b id="rcUnlockedText">详细版已解锁</b></p>
@@ -808,6 +810,7 @@
                   <span class="rc-wx-id rc-wx-reqid" id="rcWxReqId">—</span>
                 </div>
                 <p class="rc-wx-note">请保存申请编号：换设备或清除浏览器数据后，可用编号恢复进度。</p>
+                <p class="rc-wx-note"><button type="button" class="rc-wx-link" id="rcWxRestoreOpen2">有其他申请编号？点此用编号恢复</button></p>
                 <p class="rc-wx-status" id="rcWxStatus" role="status" aria-live="polite"></p>
               </div>
 
@@ -1852,10 +1855,16 @@
           pendingDesc.textContent = msg;
           pendingStatus.textContent = "";
         }
-        function openPanel() {
+        function openPanel(mode) {
           lastFocus = document.activeElement;
           overlay.hidden = false;
           document.body.style.overflow = "hidden";
+          if (mode === "restore") {
+            restoreErr.textContent = "";
+            showView("restore");
+            restoreInput.focus();
+            return;
+          }
           var req = lsGet(LS_REQ);
           if (req && !unlocked) { showPending(req); startPoll(req, false); }
           else showView("form");
@@ -1893,7 +1902,12 @@
         });
 
         /* ---------- 用申请编号恢复 ---------- */
-        $("rcWxRestoreOpen").addEventListener("click", function () { restoreErr.textContent = ""; showView("restore"); restoreInput.focus(); });
+        function gotoRestore() { restoreErr.textContent = ""; showView("restore"); restoreInput.focus(); }
+        $("rcWxRestoreOpen").addEventListener("click", gotoRestore);
+        var restoreOpen2 = $("rcWxRestoreOpen2");
+        if (restoreOpen2) restoreOpen2.addEventListener("click", gotoRestore);
+        var restoreMain = $("rcRestoreOpenMain");
+        if (restoreMain) restoreMain.addEventListener("click", function () { openPanel("restore"); });
         $("rcWxRestoreBack").addEventListener("click", function () { showView("form"); });
         restoreBtn.addEventListener("click", function () {
           var id = restoreInput.value.trim();
