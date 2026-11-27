@@ -635,6 +635,7 @@
                 <span class="rc-calc-note" id="rcB1Inc"></span>
                 <div class="rc-bm-row"><span>每月产出（投资者实际获得）</span><b id="rcB1Out">—</b></div>
                 <div class="rc-bm-row"><span>回本周期（计入减半 · 含恢复）</span><b id="rcB1PbH">—</b></div>
+                <div class="rc-bm-row"><span>减半后月净收益（恢复稳态）</span><b id="rcB1NetR">—</b></div>
                 <div class="rc-bm-row"><span>回本周期（不计减半）</span><b id="rcB1Pb">—</b></div>
               </div>
               <div class="rc-bench-mode">
@@ -643,6 +644,7 @@
                 <span class="rc-calc-note" id="rcB2Inc"></span>
                 <div class="rc-bm-row"><span>每月产出（投资者实际获得）</span><b id="rcB2Out">—</b></div>
                 <div class="rc-bm-row"><span>回本周期（计入减半 · 含恢复）</span><b id="rcB2PbH">—</b></div>
+                <div class="rc-bm-row"><span>减半后月净收益（恢复稳态）</span><b id="rcB2NetR">—</b></div>
                 <div class="rc-bm-row"><span>回本周期（不计减半）</span><b id="rcB2Pb">—</b></div>
               </div>
             </div>
@@ -650,7 +652,7 @@
               <label for="rcRecovery">减半后恢复系数</label>
               <input id="rcRecovery" type="range" min="50" max="100" step="1" value="65" />
               <span class="rc-rv" id="rcRecVal">65%</span>
-              <span class="rc-small">减半当月收入降至 50%，其后 12 个月逐步恢复至该系数并保持；默认 65% 取前两次减半中较差的一次，属偏保守情形。</span>
+              <span class="rc-small">减半当月收入降至 50%，其后 12 个月逐步恢复至该系数并保持；默认 65% 取前两次减半中较差的一次，属偏保守情形。此系数只影响减半之后：拖动时上方两张卡的「减半后月净收益（恢复稳态）」与「回本周期（计入减半）」、下方对比表与减半压力测试随即重算；减半前的月净收益与每月产出不受影响。</span>
             </div>
           </div>
 
@@ -1078,11 +1080,13 @@
           $("rcB1Inc").textContent = incomeLine(benchPrice, srcB, incomeFigs(bench.m1, true, bp), bp.usd);
           $("rcB1Out").textContent = bench.m1.keptBtc.toFixed(4) + " BTC";
           $("rcB1PbH").textContent = fmtPayback(bench.m1.paybackH, bench.m1.netR);
+          $("rcB1NetR").textContent = "¥" + fmt(bench.m1.netR);
           $("rcB1Pb").textContent = isFinite(bench.m1.payback) ? fmt(bench.m1.payback, 1) + " 个月" : "无法回本";
           $("rcB2Net").innerHTML = "¥" + fmt(bench.m2.net) + "<span> / 月净收益</span>";
           $("rcB2Inc").textContent = incomeLine(benchPrice, srcB, incomeFigs(bench.m2, false, bp), bp.usd);
           $("rcB2Out").textContent = bench.m2.keptBtc.toFixed(4) + " BTC";
           $("rcB2PbH").textContent = fmtPayback(bench.m2.paybackH, bench.m2.netR);
+          $("rcB2NetR").textContent = "¥" + fmt(bench.m2.netR);
           $("rcB2Pb").textContent = isFinite(bench.m2.payback) ? fmt(bench.m2.payback, 1) + " 个月" : "无法回本";
           $("rcRecVal").textContent = recoveryPct + "%";
 
