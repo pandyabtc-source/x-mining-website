@@ -838,16 +838,16 @@
             </table>
           </div>
           <div class="rc-sub">
-            <h3>模式一 · 分成结算方法</h3>
-            <p>分成结算无需持续关注币价，亦无需月末对账。矿池自动分币、运营负担按比例分摊，两步即可完成结算；币价波动不影响分成比例，无需重新计算。</p>
+            <h3 id="rcSettleTitle">模式一 · 分成结算方法</h3>
+            <p id="rcSettleIntro">分成结算无需持续关注币价，亦无需月末对账。矿池自动分币、运营负担按比例分摊，两步即可完成结算；币价波动不影响分成比例，无需重新计算。</p>
           </div>
-          <div class="rc-panel">
-            <h3 style="margin:0;font-size:16px;font-weight:700">每月结算两步</h3>
-            <ol style="margin:10px 0 0;padding-left:22px;font-size:15px;line-height:1.65">
+          <div class="rc-panel" id="rcSettlePanel">
+            <h3 style="margin:0;font-size:16px;font-weight:700" id="rcSettleStepsTitle">每月结算两步</h3>
+            <ol style="margin:10px 0 0;padding-left:22px;font-size:15px;line-height:1.65" id="rcSettleSteps">
               <li><b>分币：</b>矿池按 <b>79% / 21%</b> 自动分币——投资者获得当月产出的 79%，公司获得 21%，到账即完成结算，无需人工计算。</li>
               <li><b>分担：</b>当月运营负担由投资者承担 <b>79%</b>，公司承担其余 <b>21%</b>。</li>
             </ol>
-            <p style="margin:12px 0 0;font-size:14.5px">上述方式实现净利润分成 21% 的原理如下：公司获得 21% 的收入（币）、承担 21% 的运营负担，净得金额恰为<b>净利润的 21%</b>；投资者净得 79%。币价涨跌仅改变金额、不改变比例，因此<b>无需参考价、无需月末对账、无超额退还</b>，每月结算流程保持一致。</p>
+            <p style="margin:12px 0 0;font-size:14.5px" id="rcSettlePrinciple">上述方式实现净利润分成 21% 的原理如下：公司获得 21% 的收入（币）、承担 21% 的运营负担，净得金额恰为<b>净利润的 21%</b>；投资者净得 79%。币价涨跌仅改变金额、不改变比例，因此<b>无需参考价、无需月末对账、无超额退还</b>，每月结算流程保持一致。</p>
           </div>
 
           <div id="rcDetail" hidden>
@@ -906,8 +906,8 @@
             </div>
 
             <div class="rc-sub">
-              <h3>详细版 · 模式一分币示例（79% / 21%）</h3>
-              <p>把当前实时行情代入上方「模式一 · 分成结算方法」，具体数字如下：</p>
+              <h3 id="rcShareTitle">详细版 · 模式一分币示例（79% / 21%）</h3>
+              <p id="rcShareDesc">把当前实时行情代入上方「模式一 · 分成结算方法」，具体数字如下：</p>
             </div>
             <div class="rc-example" id="rcShareExample" style="margin-top:0"></div>
 
@@ -1325,6 +1325,25 @@
           $("rcHPb").textContent = !isFinite(h.paybackH) ? (h.netR <= 0 ? "减半后无法回本" : "无法回本") : h.paybackH > 120 ? "实际难以回本" : fmt(h.paybackH, 1) + " 个月";
           $("rcHPbSub").textContent = "已计入减半（冲击后 12 个月恢复至 " + recoveryPct + "%）" + (isFinite(h.payback) ? " · 不计减半约 " + fmt(h.payback, 1) + " 个月" : "");
 
+          /* settlement — follows heroMode */
+          if ($("rcSettleTitle")) {
+            if (heroMode === 1) {
+              $("rcSettleTitle").textContent = "模式一 · 分成结算方法";
+              $("rcSettleIntro").textContent = "分成结算无需持续关注币价，亦无需月末对账。矿池自动分币、运营负担按比例分摊，两步即可完成结算；币价波动不影响分成比例，无需重新计算。";
+              $("rcSettleStepsTitle").textContent = "每月结算两步";
+              $("rcSettleSteps").innerHTML = "<li><b>分币：</b>矿池按 <b>79% / 21%</b> 自动分币——投资者获得当月产出的 79%，公司获得 21%，到账即完成结算，无需人工计算。</li>"
+                + "<li><b>分担：</b>当月运营负担由投资者承担 <b>79%</b>，公司承担其余 <b>21%</b>。</li>";
+              $("rcSettlePrinciple").innerHTML = "上述方式实现净利润分成 21% 的原理如下：公司获得 21% 的收入（币）、承担 21% 的运营负担，净得金额恰为<b>净利润的 21%</b>；投资者净得 79%。币价涨跌仅改变金额、不改变比例，因此<b>无需参考价、无需月末对账、无超额退还</b>，每月结算流程保持一致。";
+            } else {
+              $("rcSettleTitle").textContent = "模式二 · 自营结算方法";
+              $("rcSettleIntro").textContent = "自营结算不做分成：产出全部归投资者，运营成本由投资者全额承担。公司按月出账，投资者核对后结算；币价与难度变化直接反映在当月净收益上，需按月对账。";
+              $("rcSettleStepsTitle").textContent = "每月结算两步";
+              $("rcSettleSteps").innerHTML = "<li><b>产出归集：</b>矿池产出 <b>100% 归投资者</b>——当月挖出的币全部进入投资者账户，公司不参与分币，到账即为投资者收入。</li>"
+                + "<li><b>成本结算：</b>当月燃气、机油及维保耗材、场地租金与运维费按<b>模式二客户口径</b>计费（气价与运维费高于模式一成本口径），由投资者<b>全额承担</b>，凭公司月度账单核对后支付。</li>";
+              $("rcSettlePrinciple").innerHTML = "模式二的净收益即为<b>当月产出价值 − 当月全部运营成本</b>：公司不抽成，投资者独享全部上行收益，也独立承担币价下跌、难度上调时成本不变带来的盈亏波动。因此模式二<b>需要参考币价、需要月末对账</b>，每月以实际用量与账单为准完成结算，与模式一的自动分币免对账方式不同。";
+            }
+          }
+
           /* compare */
           var netWin = m1.net > m2.net, netTie = m1.net === m2.net;
           var netRWin = m1.netR > m2.netR, netRTie = m1.netR === m2.netR;
@@ -1564,9 +1583,18 @@
           }
           $("rcCfBars").innerHTML = "<div class='rc-cf-row'>" + cfRow("模式一 · 合作分成（投资者承担 79%）", cf1, "#3fe3c5") + cfRow("模式二 · 自营租赁（投资者全额承担）", cf2, "#8fd0e8") + "</div>";
 
-          /* 79/21 分币示例数字 */
-          var g = cur.m1;
-          $("rcShareExample").innerHTML = "以当前实时行情测算：单台机组当月总产出 <b>" + g.btcGross.toFixed(4) + " BTC</b>，矿池自动分币——投资者到账 <b>" + g.keptBtc.toFixed(4) + " BTC（79%）</b>，公司分得 <b>" + (g.btcGross * p.share).toFixed(4) + " BTC（21%）</b>；当月运营负担合计 <b>¥" + fmt(g.costs) + "</b>，投资者承担 <b>¥" + fmt(g.costs * (1 - p.share)) + "</b>（79%），公司承担 <b>¥" + fmt(g.costs * p.share) + "</b>（21%）。";
+          /* 结算示例数字 — 跟随当前选中模式 */
+          if (heroMode === 1) {
+            if ($("rcShareTitle")) $("rcShareTitle").textContent = "详细版 · 模式一分币示例（79% / 21%）";
+            if ($("rcShareDesc")) $("rcShareDesc").textContent = "把当前实时行情代入上方「模式一 · 分成结算方法」，具体数字如下：";
+            var g = cur.m1;
+            $("rcShareExample").innerHTML = "以当前实时行情测算：单台机组当月总产出 <b>" + g.btcGross.toFixed(4) + " BTC</b>，矿池自动分币——投资者到账 <b>" + g.keptBtc.toFixed(4) + " BTC（79%）</b>，公司分得 <b>" + (g.btcGross * p.share).toFixed(4) + " BTC（21%）</b>；当月运营负担合计 <b>¥" + fmt(g.costs) + "</b>，投资者承担 <b>¥" + fmt(g.costs * (1 - p.share)) + "</b>（79%），公司承担 <b>¥" + fmt(g.costs * p.share) + "</b>（21%）。";
+          } else {
+            if ($("rcShareTitle")) $("rcShareTitle").textContent = "详细版 · 模式二结算示例（产出 100% 归投资者）";
+            if ($("rcShareDesc")) $("rcShareDesc").textContent = "把当前实时行情代入上方「模式二 · 自营结算方法」，具体数字如下：";
+            var g2 = cur.m2;
+            $("rcShareExample").innerHTML = "以当前实时行情测算：单台机组当月总产出 <b>" + g2.btcGross.toFixed(4) + " BTC</b>，全部归投资者——投资者到账 <b>" + g2.keptBtc.toFixed(4) + " BTC（100%）</b>，公司不分币；当月运营成本合计 <b>¥" + fmt(g2.costs) + "</b>，由投资者<b>全额承担</b>，按月度账单核对后结算，净收益为产出价值扣除全部成本后的余额。";
+          }
         }
         /* 授权脚本（页面末尾）通过此钩子开关详细版 */
         window.__xmSetUnlocked = function (on) {
