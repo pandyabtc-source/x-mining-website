@@ -456,6 +456,13 @@
         text-decoration: underline; text-underline-offset: 3px;
       }
       .rc-wx-reqid { font-size: 20px; }
+      .rc-wx-tabs { display: flex; gap: 8px; margin-top: 14px; }
+      .rc-wx-tab {
+        appearance: none; flex: 1; cursor: pointer; font: inherit; font-size: 13.5px; font-weight: 700;
+        padding: 9px 6px; min-height: 40px; border-radius: 8px; border: 1px solid var(--line);
+        background: rgba(4, 16, 30, 0.35); color: var(--ink-soft);
+      }
+      .rc-wx-tab.is-active { color: var(--accent); border-color: var(--accent-dim); background: rgba(63, 227, 197, 0.08); }
       .rc-chartbox svg { width: 100%; height: auto; display: block; }
 
       .rc table.rc-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
@@ -1012,19 +1019,33 @@
                   <span class="rc-wx-label" data-zh="申请编号" data-ru="Номер заявки">申请编号</span>
                   <span class="rc-wx-id rc-wx-reqid" id="rcWxReqId">—</span>
                 </div>
-                <p class="rc-wx-note" data-zh="请保存申请编号：换设备或清除浏览器数据后，可用编号恢复进度。" data-ru="Сохраните номер заявки: после смены устройства или очистки данных браузера доступ можно восстановить по номеру.">请保存申请编号：换设备或清除浏览器数据后，可用编号恢复进度。</p>
+                <p class="rc-wx-note" data-zh="请保存申请编号：换设备或清除浏览器数据后，可用编号或申请时的微信号恢复进度。" data-ru="Сохраните номер заявки: после смены устройства или очистки данных браузера доступ можно восстановить по номеру или по WeChat ID из заявки.">请保存申请编号：换设备或清除浏览器数据后，可用编号或申请时的微信号恢复进度。</p>
                 <p class="rc-wx-note"><button type="button" class="rc-wx-link" id="rcWxRestoreOpen2" data-zh="有其他申请编号？点此用编号恢复" data-ru="Есть другой номер? Восстановить по номеру">有其他申请编号？点此用编号恢复</button></p>
                 <p class="rc-wx-status" id="rcWxStatus" role="status" aria-live="polite"></p>
               </div>
 
               <div id="rcWxRestoreView" hidden>
-                <p class="rc-wx-desc" data-zh="输入申请编号查询审核状态；已批准将直接解锁详细版。" data-ru="Введите номер заявки, чтобы проверить статус; одобренная заявка сразу откроет подробную версию.">输入申请编号查询审核状态；已批准将直接解锁详细版。</p>
-                <div class="rc-wx-field">
-                  <label for="rcWxRestoreInput" data-zh="申请编号" data-ru="Номер заявки">申请编号</label>
-                  <input id="rcWxRestoreInput" type="text" autocomplete="off" maxlength="80" placeholder="粘贴申请编号" />
+                <div class="rc-wx-tabs" role="tablist">
+                  <button type="button" class="rc-wx-tab is-active" id="rcWxTabId" data-zh="用申请编号恢复" data-ru="По номеру заявки">用申请编号恢复</button>
+                  <button type="button" class="rc-wx-tab" id="rcWxTabWx" data-zh="用微信号找回" data-ru="По WeChat ID">用微信号找回</button>
+                </div>
+                <div id="rcWxRestoreById">
+                  <p class="rc-wx-desc" data-zh="输入申请编号查询审核状态；已批准将直接解锁详细版。" data-ru="Введите номер заявки, чтобы проверить статус; одобренная заявка сразу откроет подробную версию.">输入申请编号查询审核状态；已批准将直接解锁详细版。</p>
+                  <div class="rc-wx-field">
+                    <label for="rcWxRestoreInput" data-zh="申请编号" data-ru="Номер заявки">申请编号</label>
+                    <input id="rcWxRestoreInput" type="text" autocomplete="off" maxlength="80" placeholder="粘贴申请编号" />
+                  </div>
+                  <button class="rc-btn rc-btn-primary rc-wx-copy" type="button" id="rcWxRestoreBtn" data-zh="查询并恢复" data-ru="Проверить и восстановить">查询并恢复</button>
+                </div>
+                <div id="rcWxRestoreByWx" hidden>
+                  <p class="rc-wx-desc" data-zh="编号丢了也没关系：输入申请时填写的微信号查询审核状态；已批准将直接解锁详细版。" data-ru="Если номер потерян: введите WeChat ID, указанный в заявке, чтобы проверить статус; одобренная заявка сразу откроет подробную версию.">编号丢了也没关系：输入申请时填写的微信号查询审核状态；已批准将直接解锁详细版。</p>
+                  <div class="rc-wx-field">
+                    <label for="rcWxLookupInput" data-zh="微信号" data-ru="WeChat ID">微信号</label>
+                    <input id="rcWxLookupInput" type="text" autocomplete="off" maxlength="60" placeholder="申请时填写的微信号" />
+                  </div>
+                  <button class="rc-btn rc-btn-primary rc-wx-copy" type="button" id="rcWxLookupBtn" data-zh="查询并恢复" data-ru="Проверить и восстановить">查询并恢复</button>
                 </div>
                 <p class="rc-wx-err" id="rcWxRestoreErr" role="alert"></p>
-                <button class="rc-btn rc-btn-primary rc-wx-copy" type="button" id="rcWxRestoreBtn" data-zh="查询并恢复" data-ru="Проверить и восстановить">查询并恢复</button>
                 <p class="rc-wx-note"><button type="button" class="rc-wx-link" id="rcWxRestoreBack" data-zh="返回填写申请" data-ru="Вернуться к заявке">返回填写申请</button></p>
               </div>
             </div>
@@ -2145,6 +2166,9 @@
         var formView = $("rcWxFormView"), pendingView = $("rcWxPendingView"), restoreView = $("rcWxRestoreView");
         var reqIdEl = $("rcWxReqId"), pendingDesc = $("rcWxPendingDesc"), pendingStatus = $("rcWxStatus");
         var restoreInput = $("rcWxRestoreInput"), restoreBtn = $("rcWxRestoreBtn"), restoreErr = $("rcWxRestoreErr");
+        var restoreTabId = $("rcWxTabId"), restoreTabWx = $("rcWxTabWx");
+        var restoreById = $("rcWxRestoreById"), restoreByWx = $("rcWxRestoreByWx");
+        var lookupInput = $("rcWxLookupInput"), lookupBtn = $("rcWxLookupBtn");
         if (!overlay || !form || !closeBtn) return;
 
         var unlocked = false, pollTimer = null, pollFor = null, lastFocus = null, lastExp = null;
@@ -2401,6 +2425,58 @@
             }
           }).then(function () {
             restoreBtn.disabled = false; restoreBtn.textContent = L("查询并恢复", "Проверить и восстановить");
+          });
+        });
+
+        /* ---------- 恢复方式切换：申请编号 / 微信号 ---------- */
+        function setRestoreMode(mode) {
+          var byWx = mode === "wx";
+          if (restoreById) restoreById.hidden = byWx;
+          if (restoreByWx) restoreByWx.hidden = !byWx;
+          if (restoreTabId) restoreTabId.classList.toggle("is-active", !byWx);
+          if (restoreTabWx) restoreTabWx.classList.toggle("is-active", byWx);
+          restoreErr.textContent = "";
+          if (byWx) { if (lookupInput) lookupInput.focus(); }
+          else restoreInput.focus();
+        }
+        if (restoreTabId) restoreTabId.addEventListener("click", function () { setRestoreMode("id"); });
+        if (restoreTabWx) restoreTabWx.addEventListener("click", function () { setRestoreMode("wx"); });
+
+        /* ---------- 用微信号找回（编号丢失/换设备时按申请时填的微信号查最近一条申请） ---------- */
+        if (lookupBtn) lookupBtn.addEventListener("click", function () {
+          var wx = lookupInput.value.trim();
+          if (!wx) { restoreErr.textContent = L("请先输入微信号。", "Сначала введите WeChat ID."); lookupInput.focus(); return; }
+          restoreErr.textContent = "";
+          lookupBtn.disabled = true; lookupBtn.textContent = L("查询中…", "Проверка…");
+          postJson("/api/access/lookup", { wechatId: wx }).then(function (j) {
+            if (!j || j.found !== true) {
+              restoreErr.textContent = L("未找到该微信号的申请，请核对后重试。", "Заявка с таким WeChat ID не найдена; проверьте и попробуйте снова.");
+              return;
+            }
+            if (j.status === "approved" && j.id) {
+              var exp = parseExpiry(j);
+              if (exp && exp <= Date.now()) { restoreErr.textContent = L("该授权已过期，请重新提交申请。", "Срок доступа истёк; подайте заявку заново."); return; }
+              return verify(j.id).then(function (v) {
+                var e2 = v.expiresAt || exp;
+                if (e2 && e2 <= Date.now()) { restoreErr.textContent = L("该授权已过期，请重新提交申请。", "Срок доступа истёк; подайте заявку заново."); return; }
+                lsDel(LS_REQ);
+                unlock(j.id, e2);
+                closePanel();
+              });
+            }
+            if (j.status === "pending") {
+              restoreErr.textContent = L("已找到您的申请，正在审核中。通过后回到这里用微信号即可找回，无需保存编号。", "Заявка найдена и ожидает рассмотрения. После одобрения доступ восстанавливается здесь по WeChat ID — номер сохранять не нужно.");
+            } else if (j.status === "denied") {
+              restoreErr.textContent = L("该申请未通过审核。如有疑问，请到页面底部「联系我们」咨询。", "Заявка не одобрена. Вопросы — через раздел «Контакты» внизу страницы.");
+            } else if (j.status === "expired") {
+              restoreErr.textContent = L("该授权已过期，请重新提交申请。", "Срок доступа истёк; подайте заявку заново.");
+            } else {
+              restoreErr.textContent = L("查询失败，请检查网络后重试。", "Не удалось проверить. Проверьте сеть и попробуйте снова.");
+            }
+          }).catch(function () {
+            restoreErr.textContent = L("查询失败，请检查网络后重试。", "Не удалось проверить. Проверьте сеть и попробуйте снова.");
+          }).then(function () {
+            lookupBtn.disabled = false; lookupBtn.textContent = L("查询并恢复", "Проверить и восстановить");
           });
         });
 
